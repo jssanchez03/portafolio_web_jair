@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Apply saved theme before React mounts to avoid FOUC and ensure correct theme -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = saved || (prefersDark ? 'dark' : 'light');
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    
+    <!-- SEO Meta Tags -->
+    <title>Jair - Desarrollador Full Stack | Portfolio</title>
+    <meta name="description" content="Portfolio de Jair, desarrollador Full Stack especializado en React, TypeScript, Node.js y tecnologías modernas. Creando experiencias digitales increíbles." />
+    <meta name="keywords" content="desarrollador, full stack, react, typescript, nodejs, portfolio, programador, web developer" />
+    <meta name="author" content="Jair" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jair-portfolio.com/" />
+    <meta property="og:title" content="Jair - Desarrollador Full Stack | Portfolio" />
+    <meta property="og:description" content="Portfolio de Jair, desarrollador Full Stack especializado en React, TypeScript, Node.js y tecnologías modernas." />
+    <meta property="og:image" content="https://jair-portfolio.com/og-image.jpg" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://jair-portfolio.com/" />
+    <meta property="twitter:title" content="Jair - Desarrollador Full Stack | Portfolio" />
+    <meta property="twitter:description" content="Portfolio de Jair, desarrollador Full Stack especializado en React, TypeScript, Node.js y tecnologías modernas." />
+    <meta property="twitter:image" content="https://jair-portfolio.com/og-image.jpg" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://jair-portfolio.com/" />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2563eb" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jair",
+      "jobTitle": "Full Stack Developer",
+      "description": "Desarrollador Full Stack especializado en React, TypeScript, Node.js y tecnologías modernas",
+      "url": "https://jair-portfolio.com",
+      "sameAs": [
+        "https://github.com/jair",
+        "https://linkedin.com/in/jair",
+        "https://twitter.com/jair"
+      ],
+      "knowsAbout": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Node.js",
+        "Python",
+        "MongoDB",
+        "PostgreSQL",
+        "TailwindCSS",
+        "Full Stack Development"
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "projects": "Proyectos",
+    "skills": "Habilidades",
+    "certificates": "Certificados",
+    "contact": "Contacto"
+  },
+  "home": {
+    "greeting": "¡Hola! Soy",
+    "name": "Jair",
+    "title": "Desarrollador Full Stack",
+    "subtitle": "Creando experiencias digitales increíbles con código limpio y diseño moderno",
+    "cta": "Ver mi trabajo",
+    "contact": "Contáctame"
+  },
+  "about": {
+    "title": "Acerca de mí",
+    "subtitle": "Conoce más sobre mi trayectoria y pasión por el desarrollo",
+    "description": "Soy un desarrollador apasionado por crear soluciones innovadoras y experiencias de usuario excepcionales. Con experiencia en tecnologías modernas, me enfoco en escribir código limpio, escalable y mantenible.",
+    "experience": "Años de experiencia",
+    "projects": "Proyectos completados",
+    "technologies": "Tecnologías dominadas"
+  },
+  "projects": {
+    "title": "Mis Proyectos",
+    "subtitle": "Una selección de mis trabajos más destacados",
+    "viewProject": "Ver proyecto",
+    "viewCode": "Ver código",
+    "technologies": "Tecnologías utilizadas"
+  },
+  "skills": {
+    "title": "Habilidades Técnicas",
+    "subtitle": "Tecnologías y herramientas que domino",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Base de Datos",
+    "tools": "Herramientas"
+  },
+  "certificates": {
+    "title": "Certificaciones",
+    "subtitle": "Mis logros y certificaciones profesionales",
+    "viewCertificate": "Ver certificado",
+    "issuedBy": "Emitido por",
+    "date": "Fecha"
+  },
+  "contact": {
+    "title": "Contáctame",
+    "subtitle": "¿Tienes un proyecto en mente? ¡Hablemos!",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "send": "Enviar mensaje",
+    "sending": "Enviando...",
+    "success": "¡Mensaje enviado exitosamente!",
+    "error": "Error al enviar el mensaje. Inténtalo de nuevo.",
+    "namePlaceholder": "Tu nombre completo",
+    "emailPlaceholder": "tu@email.com",
+    "messagePlaceholder": "Cuéntame sobre tu proyecto o idea..."
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados",
+    "madeWith": "Hecho con",
+    "by": "por"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "retry": "Reintentar"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "portafolio_web_jair",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@formspree/react": "^2.5.5",
+    "@tailwindcss/vite": "^4.1.13",
+    "aos": "^2.3.4",
+    "clsx": "^2.1.1",
+    "framer-motion": "^10.18.0",
+    "i18next": "^23.16.8",
+    "lucide-react": "^0.294.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
+    "react-i18next": "^13.5.0",
+    "react-icons": "^5.5.0",
+    "react-scroll": "^1.9.3",
+    "tailwindcss": "^4.1.13"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@types/aos": "^3.0.7",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.7",
+    "@types/react-scroll": "^1.8.10",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.33.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "globals": "^16.3.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1",
+    "vite": "^7.1.2"
+  }
+}

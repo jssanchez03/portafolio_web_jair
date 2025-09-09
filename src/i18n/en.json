@@ -13,7 +13,11 @@
     "title": "Full Stack Developer",
     "subtitle": "Creating amazing digital experiences with clean code and modern design",
     "cta": "View my work",
-    "contact": "Contact me"
+    "contact": "Contact me",
+    "viewWork": "View My Work",
+    "getInTouch": "Get In Touch",
+    "downloadCV": "Download CV",
+    "scrollDown": "Scroll Down"
   },
   "about": {
     "title": "About me",
@@ -62,7 +66,10 @@
   "footer": {
     "rights": "All rights reserved",
     "madeWith": "Made with",
-    "by": "by"
+    "by": "by",
+    "description": "Passionate developer creating innovative digital solutions with modern technologies and clean code.",
+    "quickLinks": "Quick Links",
+    "connect": "Connect"
   },
   "common": {
     "loading": "Loading...",

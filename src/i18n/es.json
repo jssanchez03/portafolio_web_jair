@@ -13,7 +13,11 @@
     "title": "Desarrollador Full Stack",
     "subtitle": "Creando experiencias digitales increíbles con código limpio y diseño moderno",
     "cta": "Ver mi trabajo",
-    "contact": "Contáctame"
+    "contact": "Contáctame",
+    "viewWork": "Ver Mi Trabajo",
+    "getInTouch": "Contáctame",
+    "downloadCV": "Descargar CV",
+    "scrollDown": "Desplázate Hacia Abajo"
   },
   "about": {
     "title": "Acerca de mí",
@@ -62,7 +66,10 @@
   "footer": {
     "rights": "Todos los derechos reservados",
     "madeWith": "Hecho con",
-    "by": "por"
+    "by": "por",
+    "description": "Desarrollador apasionado creando soluciones digitales innovadoras con tecnologías modernas y código limpio.",
+    "quickLinks": "Enlaces Rápidos",
+    "connect": "Conectar"
   },
   "common": {
     "loading": "Cargando...",

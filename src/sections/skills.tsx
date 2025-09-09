@@ -13,8 +13,8 @@ export const Skills = () => {
     {
       title: "Frontend Development",
       icon: Code,
-      color: "text-blue-600 dark:text-blue-400",
-      bgColor: "bg-blue-50 dark:bg-blue-900/20",
+      color: "text-blue-600",
+      bgColor: "bg-blue-50",
       skills: [
         { name: "React", level: 90 },
         { name: "TypeScript", level: 85 },
@@ -27,8 +27,8 @@ export const Skills = () => {
     {
       title: "Backend Development",
       icon: Server,
-      color: "text-green-600 dark:text-green-400",
-      bgColor: "bg-green-50 dark:bg-green-900/20",
+      color: "text-green-600",
+      bgColor: "bg-green-50",
       skills: [
         { name: "Node.js", level: 85 },
         { name: "Python", level: 80 },
@@ -40,8 +40,8 @@ export const Skills = () => {
     {
       title: "Database & Cloud",
       icon: Database,
-      color: "text-purple-600 dark:text-purple-400",
-      bgColor: "bg-purple-50 dark:bg-purple-900/20",
+      color: "text-purple-600",
+      bgColor: "bg-purple-50",
       skills: [
         { name: "MongoDB", level: 85 },
         { name: "PostgreSQL", level: 80 },
@@ -53,8 +53,8 @@ export const Skills = () => {
     {
       title: "Tools & Others",
       icon: GitBranch,
-      color: "text-orange-600 dark:text-orange-400",
-      bgColor: "bg-orange-50 dark:bg-orange-900/20",
+      color: "text-orange-600",
+      bgColor: "bg-orange-50",
       skills: [
         { name: "Git", level: 90 },
         { name: "VS Code", level: 95 },
@@ -66,15 +66,15 @@ export const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="skills" className="py-20" style={{ background: 'var(--section-alt-bg)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div data-aos="fade-up">
           {/* Section Header */}
           <div data-aos="fade-up" data-aos-delay="50" className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--fg)' }}>
               {t('skills.title')}
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--muted)' }}>
               {t('skills.subtitle')}
             </p>
           </div>
@@ -88,14 +88,15 @@ export const Skills = () => {
                   key={category.title}
                   data-aos="fade-up"
                   data-aos-delay={100 + categoryIndex * 50}
-                  className={`p-6 rounded-xl ${category.bgColor} hover:shadow-lg transition-all duration-300 hover:-translate-y-2`}
+                  className="p-6 rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-2"
+                  style={{ background: 'var(--card-bg)' }}
                 >
                   {/* Category Header */}
                   <div className="flex items-center mb-6">
-                    <div className={`p-3 rounded-lg ${category.color} bg-white dark:bg-gray-700 shadow-md`}>
+                    <div className={`p-3 rounded-lg ${category.color} shadow-md`} style={{ background: 'var(--section-bg)' }}>
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <h3 className="ml-4 text-xl font-semibold text-gray-900 dark:text-white">
+                    <h3 className="ml-4 text-xl font-semibold" style={{ color: 'var(--fg)' }}>
                       {category.title}
                     </h3>
                   </div>
@@ -110,14 +111,14 @@ export const Skills = () => {
                         className="skill-item"
                       >
                         <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                          <span className="text-sm font-medium" style={{ color: 'var(--fg)' }}>
                             {skill.name}
                           </span>
-                          <span className="text-sm text-gray-500 dark:text-gray-400">
+                          <span className="text-sm" style={{ color: 'var(--muted)' }}>
                             {skill.level}%
                           </span>
                         </div>
-                        <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
+                        <div className="w-full rounded-full h-2" style={{ background: 'var(--section-alt-bg)' }}>
                           <div
                             className={`h-2 rounded-full bg-gradient-to-r ${
                               category.title === 'Frontend Development' 
@@ -148,7 +149,7 @@ export const Skills = () => {
             data-aos-delay="300"
             className="mt-16 text-center"
           >
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">
+            <h3 className="text-2xl font-semibold mb-8" style={{ color: 'var(--fg)' }}>
               Other Technologies I Work With
             </h3>
             <div className="flex flex-wrap justify-center gap-4">
@@ -161,7 +162,8 @@ export const Skills = () => {
                   key={tech}
                   data-aos="zoom-in"
                   data-aos-delay={350 + index * 25}
-                  className="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:scale-110 transition-all duration-200 border border-gray-200 dark:border-gray-600"
+                  className="px-4 py-2 rounded-full text-sm font-medium shadow-sm hover:shadow-md hover:scale-110 transition-all duration-200"
+                  style={{ background: 'var(--card-bg)', color: 'var(--fg)', border: '1px solid var(--border)' }}
                 >
                   {tech}
                 </span>

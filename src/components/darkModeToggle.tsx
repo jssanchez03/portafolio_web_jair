@@ -7,14 +7,40 @@ export const DarkModeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 hover:scale-110"
+      className="relative p-2 rounded-lg transition-all duration-300 hover:scale-110 overflow-hidden"
+      style={{ 
+        background: 'var(--card-bg)', 
+        color: 'var(--fg)',
+        border: '1px solid var(--border)'
+      }}
       aria-label="Toggle dark mode"
     >
-      {theme === 'dark' ? (
-        <Sun className="w-5 h-5" />
-      ) : (
-        <Moon className="w-5 h-5" />
-      )}
+      <div className="relative w-5 h-5">
+        {/* Sun Icon */}
+        <Sun 
+          className={`absolute inset-0 w-5 h-5 transition-all duration-500 transform ${
+            theme === 'dark' 
+              ? 'rotate-90 scale-0 opacity-0' 
+              : 'rotate-0 scale-100 opacity-100'
+          }`} 
+        />
+        {/* Moon Icon */}
+        <Moon 
+          className={`absolute inset-0 w-5 h-5 transition-all duration-500 transform ${
+            theme === 'dark' 
+              ? 'rotate-0 scale-100 opacity-100' 
+              : '-rotate-90 scale-0 opacity-0'
+          }`} 
+        />
+      </div>
+      
+      {/* Animated background glow */}
+      <div 
+        className={`absolute inset-0 rounded-lg transition-opacity duration-300 ${
+          theme === 'dark' ? 'opacity-20' : 'opacity-0'
+        }`}
+        style={{ background: 'linear-gradient(45deg, #1e40af, #7c3aed)' }}
+      />
     </button>
   );
 };

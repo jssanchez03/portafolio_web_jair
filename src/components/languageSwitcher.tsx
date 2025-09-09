@@ -13,9 +13,24 @@ export const LanguageSwitcher = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="flex items-center gap-2 p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-200 hover:scale-110"
+      className="flex items-center gap-2 p-2 rounded-lg transition-all duration-300 hover:scale-110"
+      style={{ 
+        background: 'var(--card-bg)', 
+        color: 'var(--fg)',
+        border: '1px solid var(--border)'
+      }}
       data-aos="zoom-in"
       aria-label="Toggle language"
+      onMouseEnter={(e) => {
+        const target = e.currentTarget as HTMLButtonElement;
+        target.style.background = 'var(--accent)';
+        target.style.color = 'white';
+      }}
+      onMouseLeave={(e) => {
+        const target = e.currentTarget as HTMLButtonElement;
+        target.style.background = 'var(--card-bg)';
+        target.style.color = 'var(--fg)';
+      }}
     >
       <Globe className="w-4 h-4" />
       <span className="text-sm font-medium uppercase">

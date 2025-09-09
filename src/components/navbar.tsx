@@ -41,9 +41,10 @@ export const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 ${
         scrolled
-          ? 'bg-white dark:bg-gray-900 shadow-md' 
+          ? 'shadow-md bg-[var(--bg)]' 
           : 'bg-transparent'
       }`}
+      style={{ color: 'var(--fg)' }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -52,7 +53,7 @@ export const Navbar = () => {
             <Link
               to="home"
               smooth={true}
-              duration={800}
+              duration={500}
               offset={-70}
               className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer hover:scale-105 transition-transform duration-200"
             >
@@ -68,9 +69,10 @@ export const Navbar = () => {
                   key={item.to}
                   to={item.to}
                   smooth={true}
-                  duration={800}
+                  duration={500}
                   offset={-70}
-                  className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 cursor-pointer hover:scale-105"
+                  className="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 cursor-pointer hover:scale-105"
+                  style={{ color: 'var(--fg)' }}
                 >
                   {item.name}
                 </Link>
@@ -90,7 +92,8 @@ export const Navbar = () => {
             <DarkModeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 p-2"
+              className="p-2 transition-colors duration-200"
+              style={{ color: 'var(--fg)' }}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -105,16 +108,18 @@ export const Navbar = () => {
               : 'max-h-0 opacity-0 overflow-hidden'
           }`}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-900 rounded-lg mt-2 shadow-md">
+          <div className="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2 shadow-md"
+               style={{ background: 'var(--bg)', color: 'var(--fg)' }}>
             {navItems.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 smooth={true}
-                duration={800}
+                duration={500}
                 offset={-70}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer"
+                className="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer"
                 onClick={() => setIsOpen(false)}
+                style={{ color: 'var(--fg)' }}
               >
                 {item.name}
               </Link>

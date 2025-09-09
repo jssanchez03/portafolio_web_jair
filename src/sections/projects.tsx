@@ -50,15 +50,15 @@ export const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-gray-900">
+    <section id="projects" className="py-20" style={{ background: 'var(--section-bg)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div data-aos="fade-up">
           {/* Section Header */}
           <div data-aos="fade-up" data-aos-delay="50" className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--fg)' }}>
               {t('projects.title')}
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--muted)' }}>
               {t('projects.subtitle')}
             </p>
           </div>
@@ -70,7 +70,8 @@ export const Projects = () => {
                 key={project.id}
                 data-aos="fade-up"
                 data-aos-delay={100 + index * 50}
-                className="group relative bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-2"
+                className="group relative rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-2"
+                style={{ background: 'var(--card-bg)' }}
               >
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden">
@@ -110,10 +111,10 @@ export const Projects = () => {
 
                 {/* Project Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--fg)' }}>
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
+                  <p className="mb-4 line-clamp-2" style={{ color: 'var(--muted)' }}>
                     {project.description}
                   </p>
 
@@ -122,7 +123,8 @@ export const Projects = () => {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full"
+                        className="px-3 py-1 text-sm rounded-full"
+                        style={{ background: 'var(--section-alt-bg)', color: 'var(--fg)' }}
                       >
                         {tech}
                       </span>
@@ -144,7 +146,8 @@ export const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105"
+                      className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105"
+                      style={{ border: '1px solid var(--border)', color: 'var(--fg)' }}
                     >
                       <Github className="w-4 h-4" />
                       {t('projects.viewCode')}
@@ -165,7 +168,8 @@ export const Projects = () => {
               href="https://github.com/jair" // Replace with your GitHub profile
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 font-semibold rounded-lg transition-all duration-200 hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 font-semibold rounded-lg transition-all duration-200 hover:scale-105"
+              style={{ border: '2px solid var(--border)', color: 'var(--fg)' }}
             >
               <Github className="w-5 h-5" />
               View More on GitHub

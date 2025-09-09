@@ -1,48 +1,72 @@
 import { useTranslation } from 'react-i18next';
 import { ExternalLink, Award, Calendar } from 'lucide-react';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { auto } from '@cloudinary/url-gen/actions/resize';
+import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
+import { AdvancedImage } from '@cloudinary/react';
 
 export const Certificates = () => {
   const { t } = useTranslation();
 
-  // Sample certificates data - replace with your actual certificates
+  // Initialize Cloudinary
+  const cld = new Cloudinary({ cloud: { cloudName: 'dq8at3uoc' } });
+
+  // Certificates data with Cloudinary images
   const certificates = [
     {
       id: 1,
-      title: "React Developer Certification",
-      issuer: "Meta",
+      title: "Administrador de bases de datos",
+      issuer: "Capacítate para el Empleo",
       date: "2024",
-      image: "/api/placeholder/300/200", // Replace with actual certificate image
-      credentialUrl: "https://example.com/certificate1",
-      skills: ["React", "JavaScript", "Frontend Development"]
+      imageId: "Captura_de_pantalla_2025-09-09_173651_dact0q",
+      credentialUrl: "https://capacitateparaelempleo.org/verifica/d391207e-15fa-41e7-b947-8cc9d224a8b2/4b47531c-29ad-49c0-8e4b-9727046cdc7e",
+      skills: ["Bases de Datos", "SQL", "Administración", "MySQL"],
+      hours: "83 horas",
+      score: "9.67"
     },
     {
       id: 2,
-      title: "Full Stack Web Development",
-      issuer: "freeCodeCamp",
-      date: "2023",
-      image: "/api/placeholder/300/200",
-      credentialUrl: "https://example.com/certificate2",
-      skills: ["HTML", "CSS", "JavaScript", "Node.js"]
+      title: "Lógica de programación",
+      issuer: "Capacítate para el Empleo",
+      date: "2021",
+      imageId: "Captura_de_pantalla_2025-09-09_173624_ujvuk7",
+      credentialUrl: "https://capacitateparaelempleo.org/verifica/6l9j6ugwm/",
+      skills: ["Lógica", "Algoritmos", "Programación", "Fundamentos"],
+      folio: "6l9j6ugwm",
+      hours: "60 horas"
     },
     {
       id: 3,
-      title: "AWS Cloud Practitioner",
-      issuer: "Amazon Web Services",
-      date: "2023",
-      image: "/api/placeholder/300/200",
-      credentialUrl: "https://example.com/certificate3",
-      skills: ["AWS", "Cloud Computing", "DevOps"]
+      title: "Introducción a la Programación",
+      issuer: "Universidad de las Fuerzas Armadas ESPE",
+      date: "2022",
+      imageId: "Captura_de_pantalla_2025-09-09_170552_imqcrq",
+      credentialUrl: "#",
+      skills: ["Programación", "Fundamentos", "Algoritmos", "Desarrollo"],
+      hours: "40 horas",
+      location: "Santo Domingo"
     },
     {
       id: 4,
-      title: "Python for Data Science",
-      issuer: "IBM",
+      title: "Funciones reales y sus aplicaciones a la ingeniería",
+      issuer: "Universidad Técnica de Manabí",
       date: "2022",
-      image: "/api/placeholder/300/200",
-      credentialUrl: "https://example.com/certificate4",
-      skills: ["Python", "Data Science", "Machine Learning"]
+      imageId: "Captura_de_pantalla_2025-09-09_170640_ys0bwi",
+      credentialUrl: "#",
+      skills: ["Matemáticas", "Funciones", "Ingeniería", "Análisis"],
+      hours: "2 horas",
+      type: "Webinar"
     }
   ];
+
+  // Function to create optimized Cloudinary images
+  const createOptimizedImage = (imageId: string) => {
+    return cld
+      .image(imageId)
+      .format('auto')
+      .quality('auto:best')
+      .resize(auto().gravity(autoGravity()).width(500).height(350));
+  };
 
   return (
     <section id="certificates" className="py-20" style={{ background: 'var(--section-bg)' }}>
@@ -59,65 +83,81 @@ export const Certificates = () => {
           </div>
 
           {/* Certificates Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {certificates.map((certificate, index) => (
               <div
                 key={certificate.id}
                 data-aos="fade-up"
                 data-aos-delay={200 + index * 100}
-                className="group rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-2"
+                className="group rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden hover:-translate-y-1"
                 style={{ background: 'var(--card-bg)' }}
               >
                 {/* Certificate Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={certificate.image}
-                    alt={certificate.title}
+                <div className="relative h-32 overflow-hidden">
+                  <AdvancedImage
+                    cldImg={createOptimizedImage(certificate.imageId)}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    alt={certificate.title}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <Award className="w-8 h-8 text-yellow-400" />
+                  <div className="absolute top-2 right-2">
+                    <Award className="w-5 h-5 text-yellow-400" />
                   </div>
                 </div>
 
                 {/* Certificate Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2" style={{ color: 'var(--fg)' }}>
+                <div className="p-4">
+                  <h3 className="text-sm font-semibold mb-2 line-clamp-2" style={{ color: 'var(--fg)' }}>
                     {certificate.title}
                   </h3>
                   
                   <div className="flex items-center mb-2" style={{ color: 'var(--muted)' }}>
-                    <span className="text-sm">{t('certificates.issuedBy')}: </span>
-                    <span className="text-sm font-medium ml-1">{certificate.issuer}</span>
+                    <span className="text-xs font-medium">{certificate.issuer}</span>
                   </div>
 
-                  <div className="flex items-center mb-4" style={{ color: 'var(--muted)' }}>
-                    <Calendar className="w-4 h-4 mr-2" />
-                    <span className="text-sm">{certificate.date}</span>
+                  <div className="flex items-center mb-3" style={{ color: 'var(--muted)' }}>
+                    <Calendar className="w-3 h-3 mr-1" />
+                    <span className="text-xs">{certificate.date}</span>
                   </div>
 
                   {/* Skills */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {certificate.skills.map((skill) => (
+                  <div className="flex flex-wrap gap-1 mb-3">
+                    {certificate.skills.slice(0, 3).map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1 text-xs rounded-full"
-                        style={{ background: 'var(--section-alt-bg)', color: 'var(--accent)' }}
+                        className="px-2 py-0.5 text-xs rounded-full"
+                        style={{ background: 'var(--section-bg)', color: 'var(--fg)' }}
                       >
                         {skill}
                       </span>
                     ))}
+                    {certificate.skills.length > 3 && (
+                      <span className="text-xs" style={{ color: 'var(--muted)' }}>
+                        +{certificate.skills.length - 3}
+                      </span>
+                    )}
                   </div>
+
+                  {/* Additional Information */}
+                  {certificate.hours && (
+                    <div className="flex items-center mb-2" style={{ color: 'var(--muted)' }}>
+                      <span className="text-xs">{certificate.hours}</span>
+                    </div>
+                  )}
+                  {certificate.score && (
+                    <div className="flex items-center mb-2" style={{ color: 'var(--muted)' }}>
+                      <span className="text-xs">{t('certificates.score')}: {certificate.score}</span>
+                    </div>
+                  )}
 
                   {/* View Certificate Button */}
                   <a
                     href={certificate.credentialUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-all duration-200 w-full justify-center hover:scale-105"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-medium rounded-md transition-all duration-200 w-full justify-center hover:scale-105"
                   >
-                    <ExternalLink className="w-4 h-4" />
+                    <ExternalLink className="w-3 h-3" />
                     {t('certificates.viewCertificate')}
                   </a>
                 </div>
@@ -125,32 +165,11 @@ export const Certificates = () => {
             ))}
           </div>
 
-          {/* Stats Section */}
-          <div
-            data-aos="fade-up"
-            data-aos-delay="600"
-            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8"
-          >
-            {[
-              { number: "15+", label: "Certificates Earned" },
-              { number: "5+", label: "Platforms" },
-              { number: "50+", label: "Skills Validated" },
-              { number: "2024", label: "Latest Achievement" }
-            ].map((stat, index) => (
-              <div
-                key={index}
-                data-aos="zoom-in"
-                data-aos-delay={700 + index * 100}
-                className="text-center"
-              >
-                <div className="text-3xl font-bold mb-2" style={{ color: 'var(--accent)' }}>
-                  {stat.number}
-                </div>
-                <div className="text-sm" style={{ color: 'var(--muted)' }}>
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+          {/* View More Button */}
+          <div className="text-center mt-8">
+            <button className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border-2 border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-white font-medium rounded-lg transition-all duration-200 hover:scale-105">
+              {t('certificates.viewMore')}
+            </button>
           </div>
         </div>
       </div>

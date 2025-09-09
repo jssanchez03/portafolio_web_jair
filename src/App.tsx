@@ -3,6 +3,7 @@ import { Navbar } from './components/navbar';
 import { Footer } from './components/footer';
 import { Home } from './sections/home';
 import { About } from './sections/about';
+import { Experience } from './sections/experience';
 import { Projects } from './sections/projects';
 import { Skills } from './sections/skills';
 import { Certificates } from './sections/certificates';
@@ -15,6 +16,7 @@ function App() {
       <main>
         <Home />
         <About />
+        <Experience />
         <Projects />
         <Skills />
         <Certificates />

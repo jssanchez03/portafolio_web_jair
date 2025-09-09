@@ -4,6 +4,7 @@
     "about": "Acerca de",
     "projects": "Proyectos",
     "skills": "Habilidades",
+    "experience": "Experiencia",
     "certificates": "Certificados",
     "contact": "Contacto"
   },
@@ -22,10 +23,11 @@
   "about": {
     "title": "Acerca de mí",
     "subtitle": "Conoce más sobre mi trayectoria y pasión por el desarrollo",
-    "description": "Soy un desarrollador apasionado por crear soluciones innovadoras y experiencias de usuario excepcionales. Con experiencia en tecnologías modernas, me enfoco en escribir código limpio, escalable y mantenible.",
+    "description": "Soy Ingeniero en Tecnologías de la Información con experiencia en desarrollo Full Stack de aplicaciones web y móviles. Desarrollé e implementé el sistema de evaluación docente actualmente en producción en el ISTLA y he participado en proyectos académicos, sociales y profesionales como desarrollador y diseñador UX/UI. Busco seguir creciendo como Full Stack Developer y aportar en proyectos de alto impacto.",
     "experience": "Años de experiencia",
     "projects": "Proyectos completados",
-    "technologies": "Tecnologías dominadas"
+    "technologies": "Tecnologías dominadas",
+    "coretech": "Tecnologías Principales"
   },
   "projects": {
     "title": "Mis Proyectos",
@@ -40,25 +42,40 @@
     "frontend": "Frontend",
     "backend": "Backend",
     "database": "Base de Datos",
-    "tools": "Herramientas"
+    "tools": "Herramientas",
+    "otherTech": "Otras Tecnologías que Manejo"
   },
   "certificates": {
     "title": "Certificaciones",
     "subtitle": "Mis logros y certificaciones profesionales",
     "viewCertificate": "Ver certificado",
     "issuedBy": "Emitido por",
-    "date": "Fecha"
+    "date": "Fecha",
+    "hours": "Horas",
+    "score": "Puntuación",
+    "folio": "Folio",
+    "location": "Ubicación",
+    "type": "Tipo",
+    "viewMore": "Ver más certificados"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "Mi trayectoria profesional y logros clave"
   },
   "contact": {
     "title": "Contáctame",
     "subtitle": "¿Tienes un proyecto en mente? ¡Hablemos!",
     "name": "Nombre",
     "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "location": "Ubicación",
     "message": "Mensaje",
     "send": "Enviar mensaje",
     "sending": "Enviando...",
     "success": "¡Mensaje enviado exitosamente!",
+    "successMessage": "¡Gracias por tu mensaje! Te responderé pronto.",
     "error": "Error al enviar el mensaje. Inténtalo de nuevo.",
+    "getInTouch": "Ponte en contacto",
     "namePlaceholder": "Tu nombre completo",
     "emailPlaceholder": "tu@email.com",
     "messagePlaceholder": "Cuéntame sobre tu proyecto o idea..."

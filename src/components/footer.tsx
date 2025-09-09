@@ -23,7 +23,16 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="py-12" style={{ background: 'var(--section-alt-bg)', color: 'var(--fg)' }}>
+    <footer 
+      className="py-12 border-t-2 shadow-2xl" 
+      style={{ 
+        background: 'var(--section-alt-bg)', 
+        color: 'var(--fg)',
+        borderTop: '2px solid var(--border)',
+        boxShadow: '0 -8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(10px)'
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand Section */}

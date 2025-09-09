@@ -13,13 +13,13 @@ export const About = () => {
     },
     {
       icon: Users,
-      number: "15+",
+      number: "10+",
       label: t('about.projects'),
       color: "text-green-600"
     },
     {
       icon: Award,
-      number: "10+",
+      number: "15+",
       label: t('about.technologies'),
       color: "text-purple-600"
     },
@@ -100,10 +100,10 @@ export const About = () => {
                 style={{ background: 'var(--section-alt-bg)' }}
               >
                 <h3 className="text-xl font-semibold mb-4" style={{ color: 'var(--fg)' }}>
-                  Core Technologies
+                  {t('about.coretech')}
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {['React', 'TypeScript', 'Node.js', 'Python', 'TailwindCSS', 'MongoDB'].map((tech, index) => (
+                  {['React', 'TypeScript', 'Node.js', 'Flutter', 'PHP', 'MySQL', 'Python', 'Java'].map((tech, index) => (
                     <span
                       key={tech}
                       data-aos="fade-in"

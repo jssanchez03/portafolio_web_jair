@@ -11,7 +11,7 @@ export const Skills = () => {
 
   const skillCategories = [
     {
-      title: "Frontend Development",
+      title: t('skills.frontend'),
       icon: Code,
       color: "text-blue-600",
       bgColor: "bg-blue-50",
@@ -21,46 +21,48 @@ export const Skills = () => {
         { name: "JavaScript", level: 95 },
         { name: "HTML5", level: 95 },
         { name: "CSS3", level: 90 },
-        { name: "TailwindCSS", level: 88 }
+        { name: "TailwindCSS", level: 88 },
+        { name: "Angular", level: 75 }
       ]
     },
     {
-      title: "Backend Development",
+      title: t('skills.backend'),
       icon: Server,
       color: "text-green-600",
       bgColor: "bg-green-50",
       skills: [
-        { name: "Node.js", level: 85 },
+        { name: "Node.js", level: 90 },
+        { name: "PHP", level: 85 },
         { name: "Python", level: 80 },
-        { name: "Express.js", level: 82 },
-        { name: "REST APIs", level: 88 },
-        { name: "GraphQL", level: 75 }
+        { name: "Java", level: 75 },
+        { name: "Express.js", level: 85 },
+        { name: "Laravel", level: 70 },
+        { name: "Spring Boot", level: 70 }
       ]
     },
     {
-      title: "Database & Cloud",
+      title: t('skills.database'),
       icon: Database,
       color: "text-purple-600",
       bgColor: "bg-purple-50",
       skills: [
-        { name: "MongoDB", level: 85 },
+        { name: "MySQL", level: 90 },
         { name: "PostgreSQL", level: 80 },
-        { name: "Firebase", level: 82 },
-        { name: "AWS", level: 70 },
-        { name: "Docker", level: 75 }
+        { name: "MongoDB", level: 75 },
+        { name: "SQL Server", level: 75 }
       ]
     },
     {
-      title: "Tools & Others",
+      title: t('skills.tools'),
       icon: GitBranch,
       color: "text-orange-600",
       bgColor: "bg-orange-50",
       skills: [
-        { name: "Git", level: 90 },
-        { name: "VS Code", level: 95 },
-        { name: "Figma", level: 78 },
-        { name: "Webpack", level: 75 },
-        { name: "Vite", level: 85 }
+        { name: "Git/GitHub", level: 90 },
+        { name: "Flutter", level: 85 },
+        { name: "Figma", level: 80 },
+        { name: "Postman", level: 85 },
+        { name: "VS Code", level: 95 }
       ]
     }
   ];
@@ -121,11 +123,11 @@ export const Skills = () => {
                         <div className="w-full rounded-full h-2" style={{ background: 'var(--section-alt-bg)' }}>
                           <div
                             className={`h-2 rounded-full bg-gradient-to-r ${
-                              category.title === 'Frontend Development' 
+                              category.title === t('skills.frontend') 
                                 ? 'from-blue-500 to-blue-600' 
-                                : category.title === 'Backend Development'
+                                : category.title === t('skills.backend')
                                 ? 'from-green-500 to-green-600'
-                                : category.title === 'Database & Cloud'
+                                : category.title === t('skills.database')
                                 ? 'from-purple-500 to-purple-600'
                                 : 'from-orange-500 to-orange-600'
                             }`}
@@ -150,13 +152,12 @@ export const Skills = () => {
             className="mt-16 text-center"
           >
             <h3 className="text-2xl font-semibold mb-8" style={{ color: 'var(--fg)' }}>
-              Other Technologies I Work With
+              {t('skills.otherTech')}
             </h3>
             <div className="flex flex-wrap justify-center gap-4">
               {[
-                'Next.js', 'Vue.js', 'Svelte', 'Redux', 'Zustand', 
-                'Jest', 'Cypress', 'Storybook', 'Sass', 'Less',
-                'Material-UI', 'Chakra UI', 'Ant Design', 'Bootstrap'
+                'Flask', 'Dart', 'NFC', 'UI/UX Design', 'Prototyping', 
+                'User Manuals', 'Scrum/Jira', 'REST APIs', 'Backend Integration'
               ].map((tech, index) => (
                 <span
                   key={tech}

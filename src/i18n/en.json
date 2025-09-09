@@ -4,6 +4,7 @@
     "about": "About",
     "projects": "Projects",
     "skills": "Skills",
+    "experience": "Experience",
     "certificates": "Certificates",
     "contact": "Contact"
   },
@@ -22,10 +23,11 @@
   "about": {
     "title": "About me",
     "subtitle": "Learn more about my journey and passion for development",
-    "description": "I'm a passionate developer focused on creating innovative solutions and exceptional user experiences. With experience in modern technologies, I focus on writing clean, scalable, and maintainable code.",
+    "description": "I'm an Information Technology Engineer with experience in full-stack development of web and mobile applications. I developed and implemented a teacher evaluation system currently in production at ISTLA and have participated in academic, social, and professional projects as a developer and UX/UI designer. I seek to continue growing as a Full Stack Developer and contribute to high-impact projects.",
     "experience": "Years of experience",
     "projects": "Completed projects",
-    "technologies": "Technologies mastered"
+    "technologies": "Technologies mastered",
+    "coretech": "Core Technologies"
   },
   "projects": {
     "title": "My Projects",
@@ -40,25 +42,40 @@
     "frontend": "Frontend",
     "backend": "Backend",
     "database": "Database",
-    "tools": "Tools"
+    "tools": "Tools",
+    "otherTech": "Other Technologies I Work With"
   },
   "certificates": {
     "title": "Certifications",
     "subtitle": "My achievements and professional certifications",
     "viewCertificate": "View certificate",
     "issuedBy": "Issued by",
-    "date": "Date"
+    "date": "Date",
+    "hours": "Hours",
+    "score": "Score",
+    "folio": "Folio",
+    "location": "Location",
+    "type": "Type",
+    "viewMore": "View more certificates"
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "My professional journey and key achievements"
   },
   "contact": {
     "title": "Contact me",
     "subtitle": "Have a project in mind? Let's talk!",
     "name": "Name",
     "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
     "message": "Message",
     "send": "Send message",
     "sending": "Sending...",
     "success": "Message sent successfully!",
+    "successMessage": "Thank you for your message! I'll get back to you soon.",
     "error": "Error sending message. Please try again.",
+    "getInTouch": "Get in touch",
     "namePlaceholder": "Your full name",
     "emailPlaceholder": "your@email.com",
     "messagePlaceholder": "Tell me about your project or idea..."

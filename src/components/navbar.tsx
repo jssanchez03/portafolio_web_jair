@@ -69,12 +69,14 @@ export const Navbar = () => {
           
           {/* CV Button */}
           <a
-            href="/cv.pdf"
-            download
+            href="/Currículum_Vitae_CV.pdf"
+            download="Jair_Sanchez_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-1 px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded-full transition-all duration-200 hover:scale-105 text-xs ml-1"
           >
             <Download className="w-3 h-3" />
-            CV
+            {t('nav.downloadCV')}
           </a>
           
           {/* Controls */}
@@ -114,15 +116,8 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile Navigation */}
-          <div
-            className={`transition-all duration-300 ease-in-out ${
-              isOpen
-                ? 'max-h-96 opacity-100'
-                : 'max-h-0 opacity-0 overflow-hidden'
-            }`}
-          >
-            <div className="px-2 pt-2 pb-3 space-y-1 rounded-lg mt-2 shadow-md"
-                 style={{ background: 'var(--bg)', color: 'var(--fg)' }}>
+          {isOpen && (
+            <div className="md:hidden absolute top-16 left-0 right-0 bg-[var(--bg)] shadow-lg rounded-b-lg py-2 px-4">
               {navItems.map((item) => (
                 <Link
                   key={item.to}
@@ -130,26 +125,31 @@ export const Navbar = () => {
                   smooth={true}
                   duration={500}
                   offset={-70}
-                  className="block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200 cursor-pointer"
+                  className="block px-4 py-3 text-sm font-medium hover:bg-white/10 rounded-md transition-colors"
                   onClick={() => setIsOpen(false)}
                   style={{ color: 'var(--fg)' }}
                 >
                   {item.name}
                 </Link>
               ))}
-              
-              {/* CV Button Mobile */}
               <a
-                href="/cv.pdf"
-                download
-                className="flex items-center gap-2 px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded-md transition-all duration-200 mt-2"
+                href="/Currículum_Vitae_CV.pdf"
+                download="Jair_Sanchez_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-3 text-sm font-medium hover:bg-white/10 rounded-md transition-colors"
+                style={{ color: 'var(--fg)' }}
                 onClick={() => setIsOpen(false)}
               >
-                <Download className="w-5 h-5" />
-                {t('home.downloadCV')}
+                <Download className="w-4 h-4" />
+                {t('nav.downloadCV')}
               </a>
+              <div className="flex justify-center space-x-4 py-3">
+                <LanguageSwitcher />
+                <DarkModeToggle />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </nav>
     </>

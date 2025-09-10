@@ -6,7 +6,8 @@
     "skills": "Skills",
     "experience": "Experience",
     "certificates": "Certificates",
-    "contact": "Contact"
+    "contact": "Contact",
+    "downloadCV": "Download CV"
   },
   "home": {
     "greeting": "Hi! I'm",
@@ -39,11 +40,12 @@
   "skills": {
     "title": "Technical Skills",
     "subtitle": "Technologies and tools I master",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "database": "Database",
-    "tools": "Tools",
-    "otherTech": "Other Technologies I Work With"
+    "frontend": "Frontend Development",
+    "backend": "Backend Development",
+    "database": "Database Management",
+    "tools": "Development Tools",
+    "mobile": "Mobile Development",
+    "otherTech": "Other Technologies"
   },
   "certificates": {
     "title": "Certifications",

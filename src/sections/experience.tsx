@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Briefcase, Calendar, MapPin, ExternalLink } from 'lucide-react';
+import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 export const Experience = () => {
   const { t } = useTranslation();

@@ -6,7 +6,8 @@
     "skills": "Habilidades",
     "experience": "Experiencia",
     "certificates": "Certificados",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "downloadCV": "Descargar CV"
   },
   "home": {
     "greeting": "¡Hola! Soy",
@@ -39,11 +40,12 @@
   "skills": {
     "title": "Habilidades Técnicas",
     "subtitle": "Tecnologías y herramientas que domino",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "database": "Base de Datos",
-    "tools": "Herramientas",
-    "otherTech": "Otras Tecnologías que Manejo"
+    "frontend": "Desarrollo Frontend",
+    "backend": "Desarrollo Backend",
+    "database": "Gestión de Bases de Datos",
+    "tools": "Herramientas de Desarrollo",
+    "mobile": "Desarrollo Móvil",
+    "otherTech": "Otras Tecnologías"
   },
   "certificates": {
     "title": "Certificaciones",

@@ -15,9 +15,9 @@ export const Skills = () => {
     const hasVariant = hasThemeVariants || themedIcons.includes(iconName);
     
     if (hasVariant) {
-      return `/src/assets/icons/${iconName}_${isDark ? 'dark' : 'light'}.svg`;
+      return `/icons/${iconName}_${isDark ? 'dark' : 'light'}.svg`;
     }
-    return `/src/assets/icons/${iconName}.svg`;
+    return `/icons/${iconName}.svg`;
   };
 
   // Fallbacks para íconos que pueden no existir

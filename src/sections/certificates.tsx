@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import { ExternalLink, Award, Calendar } from 'lucide-react';
+import { ExternalLink, Award, Calendar, Clock, BookOpen } from 'lucide-react';
+import { type MouseEvent } from 'react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { auto } from '@cloudinary/url-gen/actions/resize';
 import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
@@ -86,72 +87,138 @@ export const Certificates = () => {
           </div>
 
           {/* Certificates Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {certificates.map((certificate, index) => (
               <div
                 key={certificate.id}
                 data-aos="fade-up"
                 data-aos-delay={200 + index * 100}
-                className="group rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden hover:-translate-y-1 flex flex-col"
-                style={{ background: 'var(--card-bg)', minHeight: '400px' }}
+                className="group rounded-xl shadow-md overflow-hidden flex flex-col"
+                style={{ 
+                  background: 'var(--card-bg)', 
+                  border: '1px solid var(--border)',
+                  minHeight: '420px',
+                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transformOrigin: 'center center'
+                }}
+                onMouseEnter={(e: MouseEvent<HTMLDivElement>) => {
+                  e.currentTarget.style.transform = 'scale(1.02) translateY(-6px)';
+                  e.currentTarget.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 12px 24px -8px rgba(0, 0, 0, 0.15)';
+                }}
+                onMouseLeave={(e: MouseEvent<HTMLDivElement>) => {
+                  e.currentTarget.style.transform = 'scale(1) translateY(0px)';
+                  e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+                }}
               >
                 {/* Certificate Image */}
-                <div className="relative h-32 overflow-hidden flex-shrink-0">
+                <div className="relative h-36 overflow-hidden flex-shrink-0">
                   <AdvancedImage
                     cldImg={createOptimizedImage(certificate.imageId)}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover"
                     alt={certificate.title}
+                    style={{
+                      transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}
+                    onMouseEnter={(e: MouseEvent<HTMLImageElement>) => {
+                      e.currentTarget.style.transform = 'scale(1.08)';
+                    }}
+                    onMouseLeave={(e: MouseEvent<HTMLImageElement>) => {
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                  <div className="absolute top-2 right-2">
-                    <Award className="w-5 h-5 text-yellow-400" />
+                  <div className="absolute top-3 right-3">
+                    <div 
+                      className="p-2 rounded-full"
+                      style={{
+                        background: 'rgba(255, 255, 255, 0.9)',
+                        backdropFilter: 'blur(4px)'
+                      }}
+                    >
+                      <Award className="w-4 h-4 text-yellow-500" />
+                    </div>
                   </div>
                 </div>
 
                 {/* Certificate Content */}
-                <div className="p-4 flex flex-col flex-grow">
-                  <div className="flex-grow">
-                    <h3 className="text-sm font-semibold mb-2 line-clamp-2" style={{ color: 'var(--fg)' }}>
+                <div className="p-5 flex flex-col flex-grow">
+                  <div className="flex-grow space-y-4">
+                    {/* Title */}
+                    <h3 className="text-sm font-semibold leading-tight line-clamp-2" style={{ color: 'var(--fg)' }}>
                       {certificate.title}
                     </h3>
                     
-                    <div className="flex items-center mb-2" style={{ color: 'var(--muted)' }}>
-                      <span className="text-xs font-medium">{certificate.issuer}</span>
+                    {/* Issuer */}
+                    <div className="flex items-start">
+                      <span className="text-xs font-medium leading-relaxed" style={{ color: 'var(--muted)' }}>
+                        {certificate.issuer}
+                      </span>
                     </div>
 
-                    <div className="flex items-center mb-3" style={{ color: 'var(--muted)' }}>
-                      <Calendar className="w-3 h-3 mr-1" />
+                    {/* Date */}
+                    <div className="flex items-center gap-2" style={{ color: 'var(--muted)' }}>
+                      <Calendar className="w-3 h-3 flex-shrink-0" />
                       <span className="text-xs">{certificate.date}</span>
                     </div>
 
                     {/* Skills */}
-                    <div className="flex flex-wrap gap-1 mb-3">
-                      {certificate.skills.slice(0, 3).map((skill) => (
+                    <div className="flex flex-wrap gap-1">
+                      {certificate.skills.slice(0, 2).map((skill) => (
                         <span
                           key={skill}
-                          className="px-2 py-0.5 text-xs rounded-full"
-                          style={{ background: 'var(--section-bg)', color: 'var(--fg)' }}
+                          className="px-2 py-0.5 text-xs font-medium rounded-full"
+                          style={{ 
+                            background: 'var(--section-alt-bg)', 
+                            color: 'var(--fg)',
+                            transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                            transform: 'scale(1)'
+                          }}
+                          onMouseEnter={(e: MouseEvent<HTMLSpanElement>) => {
+                            e.currentTarget.style.transform = 'scale(1.05)';
+                          }}
+                          onMouseLeave={(e: MouseEvent<HTMLSpanElement>) => {
+                            e.currentTarget.style.transform = 'scale(1)';
+                          }}
                         >
                           {skill}
                         </span>
                       ))}
-                      {certificate.skills.length > 3 && (
-                        <span className="text-xs" style={{ color: 'var(--muted)' }}>
-                          +{certificate.skills.length - 3}
+                      {certificate.skills.length > 2 && (
+                        <span className="text-xs font-medium" style={{ color: 'var(--muted)' }}>
+                          +{certificate.skills.length - 2}
                         </span>
                       )}
                     </div>
 
-                    {/* Additional Information - Only show hours and type */}
-                    <div className="space-y-1">
-                      <div className="flex justify-between text-xs" style={{ color: 'var(--muted)' }}>
-                        <span>{t('certificates.hours')}:</span>
-                        <span>{certificate.hours}</span>
+                    {/* Information Cards - Mejorado sin espaciado excesivo */}
+                    <div className="space-y-2">
+                      {/* Duration */}
+                      <div 
+                        className="flex items-center gap-2 px-3 py-2 rounded-lg"
+                        style={{ 
+                          background: 'var(--section-bg)', 
+                          border: '1px solid var(--border)' 
+                        }}
+                      >
+                        <Clock className="w-3 h-3 flex-shrink-0" style={{ color: 'var(--primary)' }} />
+                        <span className="text-xs font-medium" style={{ color: 'var(--fg)' }}>
+                          {certificate.hours}
+                        </span>
                       </div>
+                      
+                      {/* Type */}
                       {certificate.type && (
-                        <div className="flex justify-between text-xs" style={{ color: 'var(--muted)' }}>
-                          <span>{t('certificates.type')}:</span>
-                          <span>{certificate.type}</span>
+                        <div 
+                          className="flex items-center gap-2 px-3 py-2 rounded-lg"
+                          style={{ 
+                            background: 'var(--section-bg)', 
+                            border: '1px solid var(--border)' 
+                          }}
+                        >
+                          <BookOpen className="w-3 h-3 flex-shrink-0" style={{ color: 'var(--primary)' }} />
+                          <span className="text-xs font-medium" style={{ color: 'var(--fg)' }}>
+                            {certificate.type}
+                          </span>
                         </div>
                       )}
                     </div>
@@ -163,7 +230,20 @@ export const Certificates = () => {
                       href={certificate.credentialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1 px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-medium rounded-md transition-all duration-200 w-full hover:scale-105"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-white text-xs font-semibold rounded-lg w-full"
+                      style={{
+                        background: 'var(--primary)',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        transform: 'scale(1)'
+                      }}
+                      onMouseEnter={(e: MouseEvent<HTMLAnchorElement>) => {
+                        e.currentTarget.style.transform = 'scale(1.02)';
+                        e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.2)';
+                      }}
+                      onMouseLeave={(e: MouseEvent<HTMLAnchorElement>) => {
+                        e.currentTarget.style.transform = 'scale(1)';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
                     >
                       <ExternalLink className="w-3 h-3" />
                       {t('certificates.viewCertificate')}
@@ -175,8 +255,25 @@ export const Certificates = () => {
           </div>
 
           {/* View More Button */}
-          <div className="text-center mt-8">
-            <button className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border-2 border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-white font-medium rounded-lg transition-all duration-200 hover:scale-105">
+          <div className="text-center mt-12">
+            <button 
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-indigo-500 text-indigo-500 font-semibold rounded-xl"
+              style={{
+                background: 'transparent',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                transform: 'scale(1)'
+              }}
+              onMouseEnter={(e: MouseEvent<HTMLButtonElement>) => {
+                e.currentTarget.style.background = '#6366f1';
+                e.currentTarget.style.color = 'white';
+                e.currentTarget.style.transform = 'scale(1.05)';
+              }}
+              onMouseLeave={(e: MouseEvent<HTMLButtonElement>) => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = '#6366f1';
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+            >
               {t('certificates.viewMore')}
             </button>
           </div>

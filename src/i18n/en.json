@@ -40,16 +40,19 @@
     "subtitle": "A selection of my most outstanding work",
     "viewProject": "View project",
     "viewCode": "View code",
+    "viewGallery": "View gallery",
+    "hideGallery": "Hide gallery",
+    "gallery": "Gallery",
     "technologies": "Technologies used",
     "featured": "Featured",
     "viewMoreGitHub": "View More on GitHub",
     "project1": {
-      "title": "E-commerce Platform",
-      "description": "A full-stack e-commerce solution with React, Node.js, and MongoDB"
+      "title": "ISTLA Teacher Evaluation System",
+      "description": "Complete web system for teacher management and evaluation at Instituto Superior Tecnológico Los Andes (ISTLA). Includes authentication modules, user management, evaluations, reports and administrative dashboard."
     },
     "project2": {
-      "title": "Task Management App",
-      "description": "A collaborative task management application with real-time updates"
+      "title": "NFC Registration and Reading App",
+      "description": "Mobile application developed in Flutter for NFC card registration and reading. Allows storing information on NFC devices and reading it later with local database functionalities."
     },
     "project3": {
       "title": "Weather Dashboard",

@@ -46,7 +46,7 @@ export const Home = () => {
           <div className="mb-2">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-1 text-[var(--fg)] leading-tight">
               <span 
-                data-aos="fade-right" 
+                data-aos="fade-up" 
                 data-aos-delay="100"
                 data-aos-duration="500"
                 className="text-2xl md:text-4xl lg:text-5xl"
@@ -55,7 +55,7 @@ export const Home = () => {
               </span>
               <br />
               <span 
-                data-aos="fade-left" 
+                data-aos="fade-up" 
                 data-aos-delay="200"
                 data-aos-duration="500"
                 className="bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent"

@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { Renderer, Program, Triangle, Mesh } from 'ogl';
 import { useTheme } from '../hooks/useTheme';
+import { useDeviceDetection } from '../hooks/useDeviceDetection';
 
 export type RaysOrigin =
   | 'top-center'
@@ -93,6 +94,7 @@ const LightRays: React.FC<LightRaysProps> = ({
   useThemeColors = false
 }) => {
   const { isDark } = useTheme();
+  const { isMobile } = useDeviceDetection();
   const containerRef = useRef<HTMLDivElement>(null);
   const uniformsRef = useRef<any>(null);
   const rendererRef = useRef<Renderer | null>(null);
@@ -135,7 +137,7 @@ const LightRays: React.FC<LightRaysProps> = ({
   }, []);
 
   useEffect(() => {
-    if (!isVisible || !containerRef.current) return;
+    if (!isVisible || !containerRef.current || isMobile) return;
 
     if (cleanupFunctionRef.current) {
       cleanupFunctionRef.current();
@@ -158,6 +160,9 @@ const LightRays: React.FC<LightRaysProps> = ({
       const gl = renderer.gl;
       gl.canvas.style.width = '100%';
       gl.canvas.style.height = '100%';
+      gl.canvas.style.pointerEvents = 'none';
+      gl.canvas.style.touchAction = 'none';
+      gl.canvas.style.userSelect = 'none';
 
       while (containerRef.current.firstChild) {
         containerRef.current.removeChild(containerRef.current.firstChild);
@@ -384,6 +389,7 @@ void main() {
     };
   }, [
     isVisible,
+    isMobile,
     raysOrigin,
     currentRaysColor,
     raysSpeed,
@@ -449,10 +455,20 @@ void main() {
     }
   }, [followMouse]);
 
+  // No renderizar nada en móvil para evitar interferencias táctiles
+  if (isMobile) {
+    return null;
+  }
+
   return (
     <div
       ref={containerRef}
-      className={`w-full h-full pointer-events-none z-[3] overflow-hidden relative ${className}`.trim()}
+      className={`w-full h-full pointer-events-none z-[1] overflow-hidden relative ${className}`.trim()}
+      style={{ 
+        pointerEvents: 'none',
+        touchAction: 'none',
+        userSelect: 'none'
+      }}
     />
   );
 };

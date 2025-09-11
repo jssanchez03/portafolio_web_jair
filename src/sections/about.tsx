@@ -37,7 +37,7 @@ export const About = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Photo with TiltedCard Animation */}
             <div 
-              data-aos="fade-right" 
+              data-aos="fade-up" 
               data-aos-duration="500"
               data-aos-delay="300"
               className="flex justify-center lg:justify-start"
@@ -60,7 +60,7 @@ export const About = () => {
 
             {/* Right Column - Description and Skills */}
             <div 
-              data-aos="fade-left" 
+              data-aos="fade-up" 
               data-aos-duration="500"
               data-aos-delay="400"
               className="space-y-8"

@@ -87,7 +87,7 @@ export const Experience = () => {
               {experiences.map((exp, index) => (
                 <div
                   key={exp.id}
-                  data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+                  data-aos="fade-up"
                   data-aos-delay={100 + index * 100}
                   className="relative"
                 >

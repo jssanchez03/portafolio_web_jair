@@ -70,6 +70,17 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
   const busyRef = useRef(false);
 
+  // Función para bloquear/desbloquear scroll del body
+  const toggleBodyScroll = useCallback((block: boolean) => {
+    if (block) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = '0px'; // Evita jump por scrollbar
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    }
+  }, []);
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const panel = panelRef.current;
@@ -194,6 +205,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   const playOpen = useCallback(() => {
     if (busyRef.current) return;
     busyRef.current = true;
+    toggleBodyScroll(true); // Bloquear scroll
     const tl = buildOpenTimeline();
     if (tl) {
       tl.eventCallback('onComplete', () => {
@@ -203,12 +215,13 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     } else {
       busyRef.current = false;
     }
-  }, [buildOpenTimeline]);
+  }, [buildOpenTimeline, toggleBodyScroll]);
 
   const playClose = useCallback(() => {
     openTlRef.current?.kill();
     openTlRef.current = null;
     itemEntranceTweenRef.current?.kill();
+    toggleBodyScroll(false); // Desbloquear scroll
 
     const panel = panelRef.current;
     const layers = preLayerElsRef.current;
@@ -241,7 +254,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         busyRef.current = false;
       }
     });
-  }, [position]);
+  }, [position, toggleBodyScroll]);
 
   const animateIcon = useCallback((opening: boolean) => {
     const icon = iconRef.current;
@@ -342,18 +355,25 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     animateText(target);
   }, [playOpen, playClose, animateIcon, animateColor, animateText, onMenuOpen, onMenuClose]);
 
+  // Cleanup scroll al desmontar
+  React.useEffect(() => {
+    return () => {
+      toggleBodyScroll(false);
+    };
+  }, [toggleBodyScroll]);
+
   return (
     <div className="sm-scope w-full h-full">
       <div
         ref={containerRef}
-        className={`staggered-menu fixed top-0 right-0 w-full h-screen z-50 ${className || ''}`}
+        className={`staggered-menu fixed top-0 left-0 w-full h-screen z-50 ${className || ''}`}
         data-position={position}
         data-open={open || undefined}
         style={{ height: '100vh', maxHeight: '100vh' }}
       >
         <div
           ref={preLayersRef}
-          className="sm-prelayers absolute top-0 right-0 bottom-0 pointer-events-none z-[5]"
+          className="sm-prelayers absolute top-0 left-0 bottom-0 w-full pointer-events-none z-[5]"
           aria-hidden="true"
         >
           {(() => {
@@ -366,7 +386,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             return arr.map((c, i) => (
               <div
                 key={i}
-                className="sm-prelayer absolute top-0 right-0 h-full w-full translate-x-0"
+                className="sm-prelayer absolute top-0 left-0 h-full w-full translate-x-0"
                 style={{ background: c }}
               />
             ));
@@ -430,7 +450,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         <aside
           id="staggered-menu-panel"
           ref={panelRef}
-          className="staggered-menu-panel absolute top-0 right-0 h-full w-80 flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px]"
+          className="staggered-menu-panel absolute top-0 left-0 h-full w-full flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-[12px]"
           style={{ 
             WebkitBackdropFilter: 'blur(12px)',
             background: 'rgba(var(--bg-rgb), 0.95)'
@@ -451,11 +471,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                       smooth={true}
                       duration={500}
                       offset={-70}
-                      className="sm-panel-item relative font-semibold text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
+                      className="sm-panel-item relative font-semibold text-[3rem] sm:text-[4rem] cursor-pointer leading-none tracking-[-2px] uppercase transition-[background,color] duration-150 ease-linear inline-block no-underline pr-[1.4em]"
                       style={{ color: 'var(--fg)' }}
                       aria-label={it.ariaLabel}
                       data-index={idx + 1}
-                      onClick={() => setOpen(false)}
+                      onClick={() => {
+                        setOpen(false);
+                        openRef.current = false;
+                        toggleBodyScroll(false);
+                        playClose();
+                      }}
                     >
                       <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
                         {it.label}

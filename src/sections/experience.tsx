@@ -61,7 +61,7 @@ export const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-20" style={{ background: 'var(--section-alt-bg)' }}>
+    <section id="experience" className="py-20 overflow-hidden" style={{ background: 'var(--section-alt-bg)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div data-aos="fade-up">
           {/* Section Header */}
@@ -79,8 +79,8 @@ export const Experience = () => {
 
           {/* Timeline */}
           <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-cyan-400 to-purple-600"></div>
+            {/* Timeline Line - Responsive */}
+            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-cyan-400 to-purple-600"></div>
 
             {/* Experience Items */}
             <div className="space-y-12">
@@ -89,59 +89,83 @@ export const Experience = () => {
                   key={exp.id}
                   data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
                   data-aos-delay={100 + index * 100}
-                  className={`relative flex items-center ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  } flex-col md:flex-row`}
+                  className="relative"
                 >
-                  {/* Timeline Dot */}
-                  <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-1/2">
+                  {/* Timeline Dot - Responsive */}
+                  <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-8 md:top-1/2">
                     <div className={`w-4 h-4 rounded-full ${getTypeColor(exp.type)} border-4 border-white shadow-lg`}></div>
                   </div>
 
-                  {/* Content Card */}
-                  <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} ml-16 md:ml-0`}>
+                  {/* Content Card - Responsive Layout */}
+                  <div className={`w-full ${
+                    index % 2 === 0 
+                      ? 'md:w-5/12 md:pr-8' 
+                      : 'md:w-5/12 md:ml-auto md:pl-8'
+                  } pl-12 md:pl-0`}>
                     <div
-                      className="p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-                      style={{ background: 'var(--card-bg)', border: '1px solid var(--border)' }}
+                      className="p-4 md:p-6 rounded-xl shadow-lg backdrop-blur-sm border"
+                      style={{ 
+                        background: 'var(--card-bg)', 
+                        border: '1px solid var(--border)',
+                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                        transformOrigin: 'center center'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'scale(1.02) translateY(-4px)';
+                        e.currentTarget.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 12px 24px -8px rgba(0, 0, 0, 0.15)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1) translateY(0px)';
+                        e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+                      }}
                     >
                       {/* Header */}
                       <div className="mb-4">
-                        <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--fg)' }}>
+                        <h3 className="text-lg md:text-xl font-bold mb-2" style={{ color: 'var(--fg)' }}>
                           {exp.title}
                         </h3>
-                        <div className="flex items-center mb-2">
-                          <Briefcase className="w-4 h-4 mr-2 text-blue-500" />
-                          <span className="font-semibold text-blue-500">
+                        <div className="flex items-start mb-2">
+                          <Briefcase className="w-4 h-4 mr-2 text-blue-500 flex-shrink-0 mt-0.5" />
+                          <span className="font-semibold text-blue-500 text-sm md:text-base leading-tight">
                             {exp.company}
                           </span>
                         </div>
-                        <div className="flex flex-wrap gap-4 text-sm" style={{ color: 'var(--muted)' }}>
+                        <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 text-sm" style={{ color: 'var(--muted)' }}>
                           <div className="flex items-center">
-                            <Calendar className="w-4 h-4 mr-1" />
-                            {exp.period}
+                            <Calendar className="w-4 h-4 mr-1 flex-shrink-0" />
+                            <span className="break-words">{exp.period}</span>
                           </div>
                           <div className="flex items-center">
-                            <MapPin className="w-4 h-4 mr-1" />
-                            {exp.location}
+                            <MapPin className="w-4 h-4 mr-1 flex-shrink-0" />
+                            <span className="break-words">{exp.location}</span>
                           </div>
                         </div>
                       </div>
 
                       {/* Description */}
-                      <p className="mb-4 leading-relaxed" style={{ color: 'var(--muted)' }}>
+                      <p className="mb-4 leading-relaxed text-sm md:text-base" style={{ color: 'var(--muted)' }}>
                         {exp.description}
                       </p>
 
-                      {/* Technologies */}
-                      <div className="flex flex-wrap gap-2">
+                      {/* Technologies - Responsive Grid */}
+                      <div className="flex flex-wrap gap-1.5 md:gap-2">
                         {exp.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="px-3 py-1 rounded-full text-xs font-medium"
+                            className="px-2 md:px-3 py-1 rounded-full text-xs font-medium break-all"
                             style={{ 
                               background: 'var(--section-bg)', 
                               color: 'var(--fg)',
-                              border: '1px solid var(--border)'
+                              border: '1px solid var(--border)',
+                              transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                              transform: 'scale(1)',
+                              maxWidth: '100%'
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.transform = 'scale(1.05)';
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.transform = 'scale(1)';
                             }}
                           >
                             {tech}
@@ -150,9 +174,6 @@ export const Experience = () => {
                       </div>
                     </div>
                   </div>
-
-                  {/* Empty space for alternating layout */}
-                  <div className="hidden md:block w-5/12"></div>
                 </div>
               ))}
             </div>

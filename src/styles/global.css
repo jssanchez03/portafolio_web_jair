@@ -3,6 +3,7 @@
 /* Theme variables */
 :root {
   --bg: #f8fafc; /* slate-50 */
+  --bg-rgb: 248, 250, 252; /* RGB values for bg */
   --fg: #1e293b; /* slate-800 */
   --hero-gradient: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%);
   --section-bg: #f1f5f9; /* slate-100 */
@@ -25,6 +26,7 @@
 
 html.dark {
   --bg: #0f172a; /* slate-950 */
+  --bg-rgb: 15, 23, 42; /* RGB values for dark bg */
   --fg: #f1f5f9; /* slate-100 */
   --hero-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   --section-bg: #0f172a;
@@ -43,6 +45,11 @@ html.dark {
   --skills-gradient: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #b91c1c 100%);
   --certificates-gradient: linear-gradient(135deg, #0c4a6e 0%, #0369a1 50%, #0284c7 100%);
   --contact-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
+
+/* Prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
 }
 
 /* Base */

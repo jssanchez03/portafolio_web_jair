@@ -1,10 +1,43 @@
 import { useTranslation } from 'react-i18next';
-import { useForm, ValidationError } from '@formspree/react';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 
 export const Contact = () => {
   const { t } = useTranslation();
-  const [state, handleSubmit] = useForm("your-form-id"); // Replace with your Formspree form ID
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  // EmailJS configuration - Replace with your actual values
+  const SERVICE_ID = 'service_cobfowa'; // Tu Service ID de EmailJS
+  const TEMPLATE_ID = 'template_zgf0egz'; // Tu Template ID
+  const PUBLIC_KEY = 'HvYCW1S8mHn0TXeqO'; // Tu Public Key
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.current) return;
+
+    setIsSubmitting(true);
+    setError('');
+
+    try {
+      await emailjs.sendForm(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        form.current,
+        PUBLIC_KEY
+      );
+      setIsSuccess(true);
+      form.current.reset();
+    } catch (error) {
+      setError('Error al enviar el mensaje. Inténtalo de nuevo.');
+      console.error('EmailJS error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const contactInfo = [
     {
@@ -27,7 +60,7 @@ export const Contact = () => {
     }
   ];
 
-  if (state.succeeded) {
+  if (isSuccess) {
     return (
       <section id="contact" className="py-20" style={{ background: 'var(--section-alt-bg)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,8 +106,8 @@ export const Contact = () => {
                       <a
                         key={index}
                         href={info.href}
-                        className="flex items-center p-4 rounded-lg hover:shadow-md transition-shadow duration-300"
-                        style={{ background: 'var(--card-bg)' }}
+                        className="flex items-center p-4 rounded-lg hover:shadow-md transition-shadow duration-300 border"
+                        style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
                       >
                         <IconComponent className="w-6 h-6 mr-4" style={{ color: 'var(--accent)' }} />
                         <div>
@@ -90,7 +123,7 @@ export const Contact = () => {
 
             {/* Contact Form */}
             <div>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium mb-2" style={{ color: 'var(--fg)' }}>
                     {t('contact.name')}
@@ -100,15 +133,22 @@ export const Contact = () => {
                     id="name"
                     name="name"
                     required
-                    className="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                    className="w-full px-4 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:scale-[1.02]"
                     style={{ 
-                      border: '1px solid var(--border)', 
+                      border: '2px solid var(--border)', 
                       background: 'var(--card-bg)', 
-                      color: 'var(--fg)' 
+                      color: 'var(--fg)'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = 'var(--accent)';
+                      e.target.style.boxShadow = '0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'var(--border)';
+                      e.target.style.boxShadow = 'none';
                     }}
                     placeholder={t('contact.namePlaceholder')}
                   />
-                  <ValidationError prefix="Name" field="name" errors={state.errors} />
                 </div>
 
                 <div>
@@ -120,15 +160,22 @@ export const Contact = () => {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
+                    className="w-full px-4 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:scale-[1.02]"
                     style={{ 
-                      border: '1px solid var(--border)', 
+                      border: '2px solid var(--border)', 
                       background: 'var(--card-bg)', 
-                      color: 'var(--fg)' 
+                      color: 'var(--fg)'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = 'var(--accent)';
+                      e.target.style.boxShadow = '0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'var(--border)';
+                      e.target.style.boxShadow = 'none';
                     }}
                     placeholder={t('contact.emailPlaceholder')}
                   />
-                  <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
 
                 <div>
@@ -140,23 +187,36 @@ export const Contact = () => {
                     name="message"
                     rows={6}
                     required
-                    className="w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-colors duration-200"
+                    className="w-full px-4 py-3 rounded-lg resize-none transition-all duration-200 focus:outline-none focus:ring-2 focus:scale-[1.02]"
                     style={{ 
-                      border: '1px solid var(--border)', 
+                      border: '2px solid var(--border)', 
                       background: 'var(--card-bg)', 
-                      color: 'var(--fg)' 
+                      color: 'var(--fg)'
+                    }}
+                    onFocus={(e) => {
+                      e.target.style.borderColor = 'var(--accent)';
+                      e.target.style.boxShadow = '0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent)';
+                    }}
+                    onBlur={(e) => {
+                      e.target.style.borderColor = 'var(--border)';
+                      e.target.style.boxShadow = 'none';
                     }}
                     placeholder={t('contact.messagePlaceholder')}
                   />
-                  <ValidationError prefix="Message" field="message" errors={state.errors} />
                 </div>
+
+                {error && (
+                  <div className="text-red-500 text-sm text-center">
+                    {error}
+                  </div>
+                )}
 
                 <button
                   type="submit"
-                  disabled={state.submitting}
-                  className="w-full px-8 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-lg shadow-lg transition-colors duration-200 flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-4 font-semibold rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 bg-indigo-500 hover:bg-indigo-600 text-white"
                 >
-                  {state.submitting ? (
+                  {isSubmitting ? (
                     <>
                       <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
                       {t('contact.sending')}

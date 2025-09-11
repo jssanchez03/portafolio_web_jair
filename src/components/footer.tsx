@@ -24,21 +24,19 @@ export const Footer = () => {
 
   return (
     <footer 
-      className="py-12 border-t-2 shadow-2xl" 
+      className="py-12 border-t" 
       style={{ 
-        background: 'var(--section-alt-bg)', 
+        background: 'var(--bg)', 
         color: 'var(--fg)',
-        borderTop: '2px solid var(--border)',
-        boxShadow: '0 -8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
-        backdropFilter: 'blur(10px)'
+        borderTop: '1px solid var(--border)'
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Jair.dev
+            <h3 className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              Jair Sánchez
             </h3>
             <p className="leading-relaxed" style={{ color: 'var(--muted)' }}>
               {t('footer.description')}

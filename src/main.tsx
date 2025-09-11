@@ -22,16 +22,19 @@ import App from './App.tsx'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-// Initialize AOS once for the entire application with optimized settings
+// Initialize AOS with subtle parallax animations
 AOS.init({
   duration: 400,
-  once: true,
-  offset: 30,
+  once: false, // Allow animations to repeat when scrolling up/down
+  offset: 50,
   easing: 'ease-out-cubic',
   delay: 0,
-  disable: 'mobile',
+  disable: 'mobile', // Disable on mobile to prevent issues
   debounceDelay: 50,
-  throttleDelay: 99
+  throttleDelay: 99,
+  mirror: true, // Enable reverse animations when scrolling up
+  anchorPlacement: 'top-bottom',
+  startEvent: 'DOMContentLoaded' // Ensure DOM is loaded before animations
 });
 
 createRoot(document.getElementById('root')!).render(

@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { Renderer, Program, Triangle, Mesh } from 'ogl';
+import { useTheme } from '../hooks/useTheme';
 
 export type RaysOrigin =
   | 'top-center'
@@ -25,9 +26,24 @@ interface LightRaysProps {
   noiseAmount?: number;
   distortion?: number;
   className?: string;
+  useThemeColors?: boolean;
 }
 
 const DEFAULT_COLOR = '#ffffff';
+
+// Theme-aware color palette
+const THEME_COLORS = {
+  light: {
+    primary: '#4338ca',    // Dark indigo - much darker for contrast
+    secondary: '#6d28d9',  // Dark purple - visible against light bg
+    accent: '#7c2d12'      // Dark brown-red - strong contrast
+  },
+  dark: {
+    primary: '#00ffff',    // Cyan - bright and visible in dark
+    secondary: '#60a5fa',  // Blue - complementary
+    accent: '#3b82f6'      // Deeper blue
+  }
+};
 
 const hexToRgb = (hex: string): [number, number, number] => {
   const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -73,8 +89,10 @@ const LightRays: React.FC<LightRaysProps> = ({
   mouseInfluence = 0.1,
   noiseAmount = 0.0,
   distortion = 0.0,
-  className = ''
+  className = '',
+  useThemeColors = false
 }) => {
+  const { isDark } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   const uniformsRef = useRef<any>(null);
   const rendererRef = useRef<Renderer | null>(null);
@@ -85,6 +103,15 @@ const LightRays: React.FC<LightRaysProps> = ({
   const cleanupFunctionRef = useRef<(() => void) | null>(null);
   const [isVisible, setIsVisible] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+  // Get theme-aware color
+  const getThemeColor = () => {
+    if (!useThemeColors) return raysColor;
+    const colors = isDark ? THEME_COLORS.dark : THEME_COLORS.light;
+    return colors.primary;
+  };
+
+  const currentRaysColor = getThemeColor();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -246,7 +273,7 @@ void main() {
         rayPos: { value: [0, 0] },
         rayDir: { value: [0, 1] },
 
-        raysColor: { value: hexToRgb(raysColor) },
+        raysColor: { value: hexToRgb(currentRaysColor) },
         raysSpeed: { value: raysSpeed },
         lightSpread: { value: lightSpread },
         rayLength: { value: rayLength },
@@ -358,7 +385,7 @@ void main() {
   }, [
     isVisible,
     raysOrigin,
-    raysColor,
+    currentRaysColor,
     raysSpeed,
     lightSpread,
     rayLength,
@@ -377,7 +404,7 @@ void main() {
     const u = uniformsRef.current;
     const renderer = rendererRef.current;
 
-    u.raysColor.value = hexToRgb(raysColor);
+    u.raysColor.value = hexToRgb(currentRaysColor);
     u.raysSpeed.value = raysSpeed;
     u.lightSpread.value = lightSpread;
     u.rayLength.value = rayLength;
@@ -394,7 +421,7 @@ void main() {
     u.rayPos.value = anchor;
     u.rayDir.value = dir;
   }, [
-    raysColor,
+    currentRaysColor,
     raysSpeed,
     lightSpread,
     raysOrigin,

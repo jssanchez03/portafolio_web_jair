@@ -4,9 +4,11 @@ import { Link } from 'react-scroll';
 import { Menu, X, Download } from 'lucide-react';
 import { DarkModeToggle } from './darkModeToggle';
 import { LanguageSwitcher } from './languageSwitcher';
+import { useTheme } from '../hooks/useTheme';
 
 export const Navbar = () => {
   const { t } = useTranslation();
+  const { isDark } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -46,7 +48,7 @@ export const Navbar = () => {
           scrolled
             ? 'backdrop-blur-md bg-white/10 shadow-lg border border-white/20' 
             : 'backdrop-blur-sm bg-white/5 border border-white/10'
-        }`}
+        } ${isDark ? '' : 'shadow-sm'}`}
         style={{ 
           borderRadius: '50px',
           padding: '8px 16px'

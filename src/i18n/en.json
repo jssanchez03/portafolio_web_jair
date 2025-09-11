@@ -28,14 +28,37 @@
     "experience": "Years of experience",
     "projects": "Completed projects",
     "technologies": "Technologies mastered",
-    "coretech": "Core Technologies"
+    "coretech": "Core Technologies",
+    "softSkills": "Soft Skills",
+    "teamwork": "Teamwork",
+    "communication": "Communication",
+    "adaptability": "Adaptability",
+    "problemSolving": "Problem Solving"
   },
   "projects": {
     "title": "My Projects",
     "subtitle": "A selection of my most outstanding work",
     "viewProject": "View project",
     "viewCode": "View code",
-    "technologies": "Technologies used"
+    "technologies": "Technologies used",
+    "featured": "Featured",
+    "viewMoreGitHub": "View More on GitHub",
+    "project1": {
+      "title": "E-commerce Platform",
+      "description": "A full-stack e-commerce solution with React, Node.js, and MongoDB"
+    },
+    "project2": {
+      "title": "Task Management App",
+      "description": "A collaborative task management application with real-time updates"
+    },
+    "project3": {
+      "title": "Weather Dashboard",
+      "description": "A responsive weather dashboard with location-based forecasts"
+    },
+    "project4": {
+      "title": "Portfolio Website",
+      "description": "A modern portfolio website with dark mode and animations"
+    }
   },
   "skills": {
     "title": "Technical Skills",

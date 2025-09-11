@@ -9,8 +9,8 @@ export const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce solution with React, Node.js, and MongoDB",
+      title: t('projects.project1.title'),
+      description: t('projects.project1.description'),
       image: "/api/placeholder/400/250", // Replace with actual image
       technologies: ["React", "Node.js", "MongoDB", "TailwindCSS"],
       liveUrl: "https://example.com",
@@ -19,8 +19,8 @@ export const Projects = () => {
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates",
+      title: t('projects.project2.title'),
+      description: t('projects.project2.description'),
       image: "/api/placeholder/400/250",
       technologies: ["React", "TypeScript", "Firebase", "Material-UI"],
       liveUrl: "https://example.com",
@@ -29,8 +29,8 @@ export const Projects = () => {
     },
     {
       id: 3,
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard with location-based forecasts",
+      title: t('projects.project3.title'),
+      description: t('projects.project3.description'),
       image: "/api/placeholder/400/250",
       technologies: ["Vue.js", "API Integration", "Chart.js", "CSS3"],
       liveUrl: "https://example.com",
@@ -39,8 +39,8 @@ export const Projects = () => {
     },
     {
       id: 4,
-      title: "Portfolio Website",
-      description: "A modern portfolio website with dark mode and animations",
+      title: t('projects.project4.title'),
+      description: t('projects.project4.description'),
       image: "/api/placeholder/400/250",
       technologies: ["React", "TypeScript", "AOS", "TailwindCSS"],
       liveUrl: "https://example.com",
@@ -70,8 +70,8 @@ export const Projects = () => {
                 key={project.id}
                 data-aos="fade-up"
                 data-aos-delay={100 + index * 50}
-                className="group relative rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-2"
-                style={{ background: 'var(--card-bg)' }}
+                className="group relative rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden hover:-translate-y-2 border"
+                style={{ background: 'var(--card-bg)', borderColor: 'var(--border)' }}
               >
                 {/* Project Image */}
                 <div className="relative h-48 overflow-hidden">
@@ -102,8 +102,8 @@ export const Projects = () => {
                   </div>
                   {project.featured && (
                     <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-blue-600 text-white text-sm font-medium rounded-full">
-                        Featured
+                      <span className="px-3 py-1 bg-indigo-500 text-white text-sm font-semibold rounded-full shadow-lg">
+                        {t('projects.featured')}
                       </span>
                     </div>
                   )}
@@ -132,12 +132,12 @@ export const Projects = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-3">
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105"
+                      className="flex items-center gap-2 px-4 py-2.5 bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                     >
                       <Eye className="w-4 h-4" />
                       {t('projects.viewProject')}
@@ -146,8 +146,7 @@ export const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105"
-                      style={{ border: '1px solid var(--border)', color: 'var(--fg)' }}
+                      className="flex items-center gap-2 px-4 py-2.5 border-2 border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-white text-sm font-semibold rounded-full transition-all duration-300 hover:scale-105"
                     >
                       <Github className="w-4 h-4" />
                       {t('projects.viewCode')}
@@ -165,14 +164,13 @@ export const Projects = () => {
             className="text-center mt-12"
           >
             <a
-              href="https://github.com/jair" // Replace with your GitHub profile
+              href="https://github.com/jssanchez03" // Replace with your GitHub profile
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 font-semibold rounded-lg transition-all duration-200 hover:scale-105"
-              style={{ border: '2px solid var(--border)', color: 'var(--fg)' }}
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-white font-semibold rounded-full transition-all duration-300 hover:scale-105"
             >
               <Github className="w-5 h-5" />
-              View More on GitHub
+              {t('projects.viewMoreGitHub')}
             </a>
           </div>
         </div>

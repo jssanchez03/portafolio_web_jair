@@ -22,7 +22,7 @@ export const Experience = () => {
       location: "Santo Domingo, Ecuador",
       period: "Septiembre 2024 – Noviembre 2024",
       description: "Migré un sistema de Python a PHP, unificando módulos en una sola aplicación web. Implementé el módulo de gestión de incidentes, agilizando registro y consulta de emergencias.",
-      technologies: ["PHP", "Python", "MySQL", "JavaScript", "HTML"],
+      technologies: ["PHP", "Python", "PostgreSQL", "JavaScript", "CSS"],
       type: "internship"
     },
     {
@@ -110,8 +110,8 @@ export const Experience = () => {
                           {exp.title}
                         </h3>
                         <div className="flex items-center mb-2">
-                          <Briefcase className="w-4 h-4 mr-2" style={{ color: 'var(--accent)' }} />
-                          <span className="font-semibold" style={{ color: 'var(--accent)' }}>
+                          <Briefcase className="w-4 h-4 mr-2 text-blue-500" />
+                          <span className="font-semibold text-blue-500">
                             {exp.company}
                           </span>
                         </div>

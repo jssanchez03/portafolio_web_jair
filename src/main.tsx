@@ -22,20 +22,46 @@ import App from './App.tsx'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-// Initialize AOS with subtle parallax animations
-AOS.init({
-  duration: 400,
-  once: false, // Allow animations to repeat when scrolling up/down
-  offset: 50,
-  easing: 'ease-out-cubic',
-  delay: 0,
-  disable: 'mobile', // Disable on mobile to prevent issues
-  debounceDelay: 50,
-  throttleDelay: 99,
-  mirror: true, // Enable reverse animations when scrolling up
-  anchorPlacement: 'top-bottom',
-  startEvent: 'DOMContentLoaded' // Ensure DOM is loaded before animations
-});
+// Detect mobile devices more accurately
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+         window.innerWidth <= 768 ||
+         ('ontouchstart' in window);
+};
+
+// Detect if device has limited performance
+const hasLimitedPerformance = () => {
+  const mobile = isMobile();
+  const lowMemory = (navigator as any).deviceMemory && (navigator as any).deviceMemory < 4;
+  const slowConnection = (navigator as any).connection && 
+    ((navigator as any).connection.effectiveType === 'slow-2g' || 
+     (navigator as any).connection.effectiveType === '2g' ||
+     (navigator as any).connection.effectiveType === '3g');
+  
+  return mobile || lowMemory || slowConnection;
+};
+
+// Initialize AOS with mobile-optimized settings
+const initAOS = () => {
+  const isLimitedDevice = hasLimitedPerformance();
+  
+  AOS.init({
+    duration: isLimitedDevice ? 300 : 400,
+    once: isLimitedDevice ? true : false, // On mobile, animate only once for performance
+    offset: isLimitedDevice ? 20 : 50,
+    easing: 'ease-out-cubic',
+    delay: 0,
+    disable: false, // Enable on all devices but with different settings
+    debounceDelay: isLimitedDevice ? 100 : 50,
+    throttleDelay: isLimitedDevice ? 150 : 99,
+    mirror: !isLimitedDevice, // Disable reverse animations on limited devices
+    anchorPlacement: 'top-bottom',
+    startEvent: 'DOMContentLoaded'
+  });
+};
+
+// Initialize with delay to ensure proper loading
+setTimeout(initAOS, 100);
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

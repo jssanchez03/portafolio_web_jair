@@ -102,8 +102,6 @@ export const Navbar = () => {
         <StaggeredMenu
           position="right"
           items={staggeredMenuItems}
-          displaySocials={false}
-          displayItemNumbering={false}
           className="md:hidden"
           menuButtonColor="var(--fg)"
           openMenuButtonColor="var(--fg)"

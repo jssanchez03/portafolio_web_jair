@@ -171,8 +171,9 @@ export const Projects = () => {
                       }}
                     />
                     <div 
-                      className="absolute inset-0 rounded-t-xl bg-black/50 flex items-center justify-center"
+                      className="absolute inset-0 rounded-t-xl flex items-center justify-center"
                       style={{
+                        background: 'rgba(0, 0, 0, 0.6)',
                         opacity: '0',
                         transition: 'opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
                       }}
@@ -189,17 +190,22 @@ export const Projects = () => {
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white"
+                            className="p-3 backdrop-blur-sm rounded-full"
                             style={{
+                              background: 'rgba(255, 255, 255, 0.9)',
+                              color: 'var(--primary)',
+                              border: '1px solid rgba(255, 255, 255, 0.2)',
                               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                               transform: 'scale(1)'
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
+                              e.currentTarget.style.background = 'var(--primary)';
+                              e.currentTarget.style.color = 'white';
                               e.currentTarget.style.transform = 'scale(1.1)';
                             }}
                             onMouseLeave={(e) => {
-                              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+                              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.9)';
+                              e.currentTarget.style.color = 'var(--primary)';
                               e.currentTarget.style.transform = 'scale(1)';
                             }}
                           >
@@ -211,17 +217,22 @@ export const Projects = () => {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white"
+                            className="p-3 backdrop-blur-sm rounded-full"
                             style={{
+                              background: 'rgba(255, 255, 255, 0.9)',
+                              color: 'var(--primary)',
+                              border: '1px solid rgba(255, 255, 255, 0.2)',
                               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                               transform: 'scale(1)'
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
+                              e.currentTarget.style.background = 'var(--primary)';
+                              e.currentTarget.style.color = 'white';
                               e.currentTarget.style.transform = 'scale(1.1)';
                             }}
                             onMouseLeave={(e) => {
-                              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+                              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.9)';
+                              e.currentTarget.style.color = 'var(--primary)';
                               e.currentTarget.style.transform = 'scale(1)';
                             }}
                           >
@@ -233,17 +244,22 @@ export const Projects = () => {
                             setModalProject(project);
                             setIsModalOpen(true);
                           }}
-                          className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white"
+                          className="p-3 backdrop-blur-sm rounded-full"
                           style={{
+                            background: 'rgba(255, 255, 255, 0.9)',
+                            color: 'var(--primary)',
+                            border: '1px solid rgba(255, 255, 255, 0.2)',
                             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                             transform: 'scale(1)'
                           }}
                           onMouseEnter={(e) => {
-                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
+                            e.currentTarget.style.background = 'var(--primary)';
+                            e.currentTarget.style.color = 'white';
                             e.currentTarget.style.transform = 'scale(1.1)';
                           }}
                           onMouseLeave={(e) => {
-                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
+                            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.9)';
+                            e.currentTarget.style.color = 'var(--primary)';
                             e.currentTarget.style.transform = 'scale(1)';
                           }}
                         >

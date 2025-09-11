@@ -9,8 +9,12 @@ export const Home = () => {
   return (
     <section
       id="home"
-      className="h-screen flex items-center justify-center relative overflow-hidden"
-      style={{ background: 'var(--hero-gradient)', color: 'var(--fg)' }}
+      className="min-h-screen h-screen md:h-screen flex items-center justify-center relative overflow-hidden"
+      style={{ 
+        background: 'var(--hero-gradient)', 
+        color: 'var(--fg)',
+        minHeight: 'calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom))'
+      }}
     >
       {/* Light Rays Background Effect */}
       <div className="absolute inset-0 w-full h-full">

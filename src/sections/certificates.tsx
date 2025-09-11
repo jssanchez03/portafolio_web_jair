@@ -230,9 +230,11 @@ export const Certificates = () => {
                       href={certificate.credentialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-white text-xs font-semibold rounded-lg w-full"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-lg w-full"
                       style={{
                         background: 'var(--primary)',
+                        color: 'white',
+                        border: '1px solid var(--primary)',
                         transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                         transform: 'scale(1)'
                       }}

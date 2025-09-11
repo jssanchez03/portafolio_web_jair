@@ -11,6 +11,7 @@
   --border: #cbd5e1; /* slate-300 */
   --muted: #64748b; /* slate-500 */
   --accent: #0f172a; /* slate-950 */
+  --primary: #6366f1; /* indigo-500 */
   
   /* Section-specific gradients for light mode */
   --home-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
@@ -32,6 +33,7 @@ html.dark {
   --border: #334155; /* slate-700 */
   --muted: #9ca3af; /* gray-400 */
   --accent: #60a5fa; /* blue-400 */
+  --primary: #8b5cf6; /* violet-500 */
   
   /* Section-specific gradients for dark mode */
   --home-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);

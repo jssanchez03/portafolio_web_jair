@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-scroll';
-import { Menu, X, Download } from 'lucide-react';
+import { Download } from 'lucide-react';
 import { DarkModeToggle } from './darkModeToggle';
 import { LanguageSwitcher } from './languageSwitcher';
 import { useTheme } from '../hooks/useTheme';
+import StaggeredMenu from './StaggeredMenu';
 
 export const Navbar = () => {
   const { t } = useTranslation();
   const { isDark } = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -39,6 +39,13 @@ export const Navbar = () => {
     { name: t('nav.certificates'), to: 'certificates' },
     { name: t('nav.contact'), to: 'contact' },
   ];
+
+  // Preparar elementos para StaggeredMenu con navegación suave
+  const staggeredMenuItems = navItems.map(item => ({
+    label: item.name,
+    ariaLabel: item.name,
+    link: item.to // Solo el ID, sin #
+  }));
 
   return (
     <>
@@ -89,71 +96,21 @@ export const Navbar = () => {
         </div>
       </nav>
 
-      {/* Mobile Navbar */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-200 md:hidden ${
-          scrolled
-            ? 'shadow-md bg-[var(--bg)]' 
-            : 'bg-transparent'
-        }`}
-        style={{ color: 'var(--fg)' }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Empty space for centering */}
-            <div className="flex-1"></div>
-
-            {/* Mobile menu button and controls */}
-            <div className="flex items-center space-x-2">
-              <LanguageSwitcher />
-              <DarkModeToggle />
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="p-2 transition-colors duration-200"
-                style={{ color: 'var(--fg)' }}
-              >
-                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          {isOpen && (
-            <div className="md:hidden absolute top-16 left-0 right-0 bg-[var(--bg)] shadow-lg rounded-b-lg py-2 px-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.to}
-                  to={item.to}
-                  smooth={true}
-                  duration={500}
-                  offset={-70}
-                  className="block px-4 py-3 text-sm font-medium hover:bg-white/10 rounded-md transition-colors"
-                  onClick={() => setIsOpen(false)}
-                  style={{ color: 'var(--fg)' }}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <a
-                href="/Currículum_Vitae_CV.pdf"
-                download="Jair_Sanchez_CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-3 text-sm font-medium hover:bg-white/10 rounded-md transition-colors"
-                style={{ color: 'var(--fg)' }}
-                onClick={() => setIsOpen(false)}
-              >
-                <Download className="w-4 h-4" />
-                {t('nav.downloadCV')}
-              </a>
-              <div className="flex justify-center space-x-4 py-3">
-                <LanguageSwitcher />
-                <DarkModeToggle />
-              </div>
-            </div>
-          )}
-        </div>
-      </nav>
+      {/* Mobile Navigation with StaggeredMenu */}
+      <div className="md:hidden">
+        {/* StaggeredMenu with integrated controls */}
+        <StaggeredMenu
+          position="right"
+          items={staggeredMenuItems}
+          displaySocials={false}
+          displayItemNumbering={false}
+          className="md:hidden"
+          menuButtonColor="var(--fg)"
+          openMenuButtonColor="var(--fg)"
+          changeMenuColorOnOpen={true}
+          showControls={true}
+        />
+      </div>
     </>
   );
 };

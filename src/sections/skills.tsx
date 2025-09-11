@@ -16,7 +16,7 @@ export const Skills = () => {
   const getIconPath = (iconName: string, hasThemeVariants: boolean = false) => {
     // Lista de iconos que SÍ tienen variantes light/dark
     const themedIcons = [
-      'React', 'Express.js', 'GitHub', 'Php', 'Flask', 'ui'
+      'React', 'Express.js', 'GitHub', 'Php', 'Flask', 'ui', 'Vercel'
     ];
 
     const hasVariant = hasThemeVariants || themedIcons.includes(iconName);
@@ -101,6 +101,7 @@ export const Skills = () => {
         { name: 'Postman', icon: getIconPath('postman') },
         { name: 'VS Code', icon: getIconPath('vscode') },
         { name: 'Figma', icon: getIconPath('figma') },
+        { name: 'Vercel', icon: getIconPath('Vercel') },
       ],
     },
     {
@@ -111,6 +112,8 @@ export const Skills = () => {
         { name: 'JWT', icon: getIconPath('jwt') },
         { name: 'Vitejs', icon: getIconPath('vitejs') },
         { name: 'NPM', icon: getIconPath('npm') },
+        { name: 'Canva', icon: getIconPath('canva') },
+        { name: 'Notion', icon: getIconPath('notion') },
       ],
     },
   ];

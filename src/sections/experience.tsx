@@ -12,7 +12,7 @@ export const Experience = () => {
       location: "Santo Domingo, Ecuador",
       period: "Marzo 2025 – Agosto 2025",
       description: "Desarrollé un sistema web de evaluación docente en producción, con autenticación, formularios dinámicos y paneles por roles. Generé reportes en tiempo real (Node.js, React, MySQL) que mejoraron la toma de decisiones académicas.",
-      technologies: ["Node.js", "React", "MySQL", "JavaScript", "HTML", "CSS"],
+      technologies: ["Node.js", "React", "MySQL", "TypeScript", "HTML", "TailwindCSS"],
       type: "work"
     },
     {
@@ -22,7 +22,7 @@ export const Experience = () => {
       location: "Santo Domingo, Ecuador",
       period: "Septiembre 2024 – Noviembre 2024",
       description: "Migré un sistema de Python a PHP, unificando módulos en una sola aplicación web. Implementé el módulo de gestión de incidentes, agilizando registro y consulta de emergencias.",
-      technologies: ["PHP", "Python", "PostgreSQL", "JavaScript", "CSS"],
+      technologies: ["PHP", "Python", "PostgreSQL", "JavaScript", "CSS", "jQuery", "Bootstrap"],
       type: "internship"
     },
     {

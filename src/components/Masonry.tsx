@@ -85,9 +85,9 @@ const Masonry: React.FC<MasonryProps> = ({
   onImageClick
 }) => {
   const columns = useMedia(
-    ['(min-width:1500px)', '(min-width:1000px)', '(min-width:600px)', '(min-width:400px)'],
-    [5, 4, 3, 2],
-    1
+    ['(min-width:1500px)', '(min-width:1000px)', '(min-width:600px)', '(min-width:480px)', '(min-width:360px)'],
+    [5, 4, 3, 3, 2],
+    2
   );
 
   const [containerRef, { width }] = useMeasure<HTMLDivElement>();
@@ -133,10 +133,63 @@ const Masonry: React.FC<MasonryProps> = ({
     const totalGaps = (columns - 1) * gap;
     const columnWidth = (width - totalGaps) / columns;
 
-    return items.map(child => {
-      const col = colHeights.indexOf(Math.min(...colHeights));
+    return items.map((child, index) => {
+      // For mobile (2-3 columns), create varied patterns
+      let col: number;
+      if (columns === 2) {
+        // Create alternating patterns for visual variety
+        const posInPattern = index % 4;
+        
+        if (posInPattern === 0 || posInPattern === 1) {
+          // First two items: use both columns
+          col = colHeights.indexOf(Math.min(...colHeights));
+        } else if (posInPattern === 2) {
+          // Third item: prefer left column
+          col = 0;
+        } else {
+          // Fourth item: prefer right column
+          col = 1;
+        }
+      } else if (columns === 3 && width < 600) {
+        // For 3-column mobile layout, create varied patterns
+        const posInPattern = index % 6;
+        
+        if (posInPattern < 3) {
+          // First three items: distribute across all columns
+          col = colHeights.indexOf(Math.min(...colHeights));
+        } else if (posInPattern === 3) {
+          // Fourth item: prefer left
+          col = 0;
+        } else if (posInPattern === 4) {
+          // Fifth item: prefer center
+          col = 1;
+        } else {
+          // Sixth item: prefer right
+          col = 2;
+        }
+      } else {
+        col = colHeights.indexOf(Math.min(...colHeights));
+      }
+
       const x = col * (columnWidth + gap);
-      const height = child.height / 2;
+      
+      // Vary heights for mobile to create more interesting layout
+      let height: number;
+      if (columns <= 3 && width < 600) {
+        // Create varied heights for mobile masonry effect
+        const heightVariations = [
+          child.height / 2.8,  // Shorter
+          child.height / 2.3,  // Short
+          child.height / 2,    // Normal
+          child.height / 1.8,  // Tall
+          child.height / 1.6,  // Taller
+          child.height / 1.4   // Much taller
+        ];
+        height = heightVariations[index % heightVariations.length];
+      } else {
+        height = child.height / 2;
+      }
+      
       const y = colHeights[col];
 
       colHeights[col] += height + gap;

@@ -87,6 +87,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       const offscreen = position === 'left' ? -100 : 100;
       gsap.set([panel, ...preLayers], { xPercent: offscreen });
 
+      // Inicializar elementos de texto también
+      const itemEls = Array.from(panel.querySelectorAll('.sm-panel-itemLabel')) as HTMLElement[];
+      if (itemEls.length) gsap.set(itemEls, { yPercent: 140, rotate: 10 });
+
       gsap.set(plusH, { transformOrigin: '50% 50%', rotate: 0 });
       gsap.set(plusV, { transformOrigin: '50% 50%', rotate: 90 });
       gsap.set(icon, { rotate: 0, transformOrigin: '50% 50%' });
@@ -262,13 +266,13 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   }, [toggleBodyScroll]);
 
   return (
-    <div className="sm-scope w-full h-full">
+    <div className="sm-scope">
       <div
         ref={containerRef}
-        className={`staggered-menu fixed top-0 left-0 w-full h-screen z-50 ${className || ''}`}
+        className={`staggered-menu ${open ? 'fixed top-0 left-0 w-full h-screen z-50' : 'fixed top-0 right-0 z-50 pointer-events-none'} ${className || ''}`}
         data-position={position}
         data-open={open || undefined}
-        style={{ height: '100vh', maxHeight: '100vh' }}
+        style={{ height: open ? '100vh' : 'auto', maxHeight: open ? '100vh' : 'auto' }}
       >
         <div
           ref={preLayersRef}
@@ -292,7 +296,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           })()}
         </div>
 
-        <header className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-end p-4 bg-transparent pointer-events-none z-20">
+        <header className={`staggered-menu-header absolute top-0 ${open ? 'left-0 w-full' : 'right-0 w-auto'} flex items-center justify-end bg-transparent pointer-events-none z-20`} style={{ padding: open ? '1rem' : '1rem 1rem 1rem 0' }}>
           <div className="flex items-center gap-3 pointer-events-auto">
             {/* Controles siempre visibles en móvil */}
             {showControls && (
@@ -387,7 +391,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
       <style>{`
 .sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 40; }
-.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: end; padding: 1rem; background: transparent; pointer-events: none; z-index: 20; }
+.sm-scope .staggered-menu-header { position: absolute; top: 0; display: flex; align-items: center; justify-content: end; background: transparent; pointer-events: none; z-index: 20; }
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
 .sm-scope .sm-toggle { position: relative; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer; color: #e9e9ef; font-weight: 500; line-height: 1; overflow: visible; }
 .sm-scope .sm-toggle:focus-visible { outline: 2px solid #ffffffaa; outline-offset: 4px; border-radius: 4px; }

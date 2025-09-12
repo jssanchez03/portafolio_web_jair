@@ -33,8 +33,13 @@ const useMeasure = <T extends HTMLElement>() => {
 };
 
 const preloadImages = async (urls: string[]): Promise<void> => {
+  // Preload only first 3 images for faster initial render
+  const priorityUrls = urls.slice(0, 3);
+  const remainingUrls = urls.slice(3);
+  
+  // Load priority images first
   await Promise.all(
-    urls.map(
+    priorityUrls.map(
       src =>
         new Promise<void>(resolve => {
           const img = new Image();
@@ -43,6 +48,14 @@ const preloadImages = async (urls: string[]): Promise<void> => {
         })
     )
   );
+  
+  // Load remaining images in background
+  setTimeout(() => {
+    remainingUrls.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, 100);
 };
 
 interface Item {
@@ -216,14 +229,14 @@ const Masonry: React.FC<MasonryProps> = ({
             y: start.y,
             width: item.w,
             height: item.h,
-            ...(blurToFocus && { filter: 'blur(10px)' })
+            ...(blurToFocus && { filter: 'blur(5px)' })
           },
           {
             opacity: 1,
             ...animProps,
             ...(blurToFocus && { filter: 'blur(0px)' }),
-            duration: 0.8,
-            ease: 'power3.out',
+            duration: 0.5,
+            ease: 'power2.out',
             delay: index * stagger
           }
         );

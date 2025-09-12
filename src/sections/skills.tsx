@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../hooks/useTheme';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 
 export const Skills = () => {
   const { t } = useTranslation();
@@ -12,8 +12,8 @@ export const Skills = () => {
     setImageKey(prev => prev + 1);
   }, [isDark]);
 
-  // Helper: icon path with theme variant
-  const getIconPath = (iconName: string, hasThemeVariants: boolean = false) => {
+  // Memoized helper: icon path with theme variant
+  const getIconPath = useCallback((iconName: string, hasThemeVariants: boolean = false) => {
     // Lista de iconos que SÍ tienen variantes light/dark
     const themedIcons = [
       'React', 'Express.js', 'GitHub', 'Php', 'Flask', 'ui', 'Vercel'
@@ -25,7 +25,7 @@ export const Skills = () => {
       return `/icons/${iconName}_${isDark ? 'dark' : 'light'}.svg?v=${imageKey}`;
     }
     return `/icons/${iconName}.svg`;
-  };
+  }, [isDark, imageKey]);
 
   // Fallbacks para íconos que pueden no existir
   const fallbackIconByName: Record<string, string> = {
@@ -41,8 +41,8 @@ export const Skills = () => {
     return out.slice(0, max);
   };
 
-  // Move skillCategories inside component to recalculate icons on theme change
-  const skillCategories = [
+  // Memoized skillCategories to prevent unnecessary re-renders
+  const skillCategories = useMemo(() => [
     {
       title: t('skills.frontend'),
       color: 'from-blue-500 to-cyan-500',
@@ -116,7 +116,7 @@ export const Skills = () => {
         { name: 'Notion', icon: getIconPath('notion') },
       ],
     },
-  ];
+  ], [t, getIconPath]);
 
   return (
     <section id="skills" className="py-20" style={{ background: 'var(--section-alt-bg)' }}>
@@ -202,6 +202,7 @@ export const Skills = () => {
                                   alt={skill.name}
                                   key={`${skill.name}-${isDark}-${imageKey}`}
                                   className="w-8 h-8 object-contain"
+                                  loading="lazy"
                                   onError={(e) => {
                                     const target = e.currentTarget as HTMLImageElement;
                                     const fallback = fallbackIconByName[skill.name as keyof typeof fallbackIconByName];

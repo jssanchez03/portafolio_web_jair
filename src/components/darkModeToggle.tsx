@@ -7,26 +7,25 @@ export const DarkModeToggle = () => {
   return (
     <button
       onClick={toggleTheme}
-      className="group relative p-2 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 overflow-hidden"
-      style={{ 
-        background: 'var(--card-bg)', 
-        color: 'var(--fg)',
-        border: '1px solid var(--border)'
-      }}
+      className="group relative inline-flex items-center justify-center px-3 py-2 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 overflow-hidden backdrop-blur-sm bg-white/10 border border-white/20 text-[var(--fg)] whitespace-nowrap hover:bg-white/20"
       aria-label="Toggle dark mode"
+      style={{
+        // Purple-tinted frosted background without losing transparency
+        background: 'color-mix(in srgb, var(--primary) 18%, transparent)',
+        borderColor: 'color-mix(in srgb, var(--primary) 35%, transparent)',
+        color: 'var(--fg)'
+      }}
       onMouseEnter={(e) => {
-        const target = e.currentTarget as HTMLButtonElement;
-        target.style.background = 'var(--primary)';
-        target.style.color = 'white';
-        target.style.borderColor = 'var(--primary)';
-        target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+        const el = e.currentTarget as HTMLButtonElement;
+        el.style.background = 'color-mix(in srgb, var(--primary) 28%, transparent)';
+        el.style.borderColor = 'color-mix(in srgb, var(--primary) 45%, transparent)';
+        el.style.color = 'var(--fg)';
       }}
       onMouseLeave={(e) => {
-        const target = e.currentTarget as HTMLButtonElement;
-        target.style.background = 'var(--card-bg)';
-        target.style.color = 'var(--fg)';
-        target.style.borderColor = 'var(--border)';
-        target.style.boxShadow = 'none';
+        const el = e.currentTarget as HTMLButtonElement;
+        el.style.background = 'color-mix(in srgb, var(--primary) 18%, transparent)';
+        el.style.borderColor = 'color-mix(in srgb, var(--primary) 35%, transparent)';
+        el.style.color = 'var(--fg)';
       }}
     >
       <div className="relative w-5 h-5">
@@ -55,7 +54,7 @@ export const DarkModeToggle = () => {
       
       {/* Gentle background glow */}
       <div 
-        className={`absolute inset-0 rounded-lg transition-opacity duration-300 ${
+        className={`absolute inset-0 rounded-full transition-opacity duration-300 ${
           theme === 'dark' ? 'opacity-10' : 'opacity-0'
         } group-hover:opacity-20`}
         style={{ background: 'linear-gradient(45deg, #64748b, #94a3b8)' }}

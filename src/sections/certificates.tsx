@@ -135,7 +135,7 @@ export const Certificates = () => {
                         backdropFilter: 'blur(4px)'
                       }}
                     >
-                      <Award className="w-4 h-4 text-yellow-500" />
+                      <Award className="w-4 h-4" style={{ color: 'var(--primary)' }} />
                     </div>
                   </div>
                 </div>

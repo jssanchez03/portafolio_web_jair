@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import { Mail, Phone, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, AlertCircle, CheckCircle } from 'lucide-react';
 
 export const Contact = () => {
   const { t } = useTranslation();
@@ -10,6 +10,26 @@ export const Contact = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
+  const [canPlayLottie, setCanPlayLottie] = useState(false);
+
+  // Detect if the dotlottie web component is available; if not, we'll show a fallback icon
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined' && 'customElements' in window) {
+        const existing = (window as any).customElements.get('dotlottie-player');
+        if (existing) {
+          setCanPlayLottie(true);
+        } else if ((window as any).customElements.whenDefined) {
+          (window as any).customElements
+            .whenDefined('dotlottie-player')
+            .then(() => setCanPlayLottie(true))
+            .catch(() => setCanPlayLottie(false));
+        }
+      }
+    } catch {
+      setCanPlayLottie(false);
+    }
+  }, []);
 
   // EmailJS configuration - Replace with your actual values
   const SERVICE_ID = 'service_cobfowa'; // Tu Service ID de EmailJS
@@ -100,7 +120,18 @@ export const Contact = () => {
       <section id="contact" className="py-20" style={{ background: 'var(--section-alt-bg)' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+            {/* Success Animation (with fallback) */}
+            <div className="flex items-center justify-center mb-4">
+              {canPlayLottie ? (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: `<dotlottie-player src="/MessageSentSuccessfully_Plane.lottie" background="transparent" speed="1" style="width: 120px; height: 120px;" autoplay></dotlottie-player>`
+                  }}
+                />
+              ) : (
+                <CheckCircle className="w-16 h-16" style={{ color: 'var(--primary)' }} />
+              )}
+            </div>
             <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--fg)' }}>
               {t('contact.success')}
             </h2>

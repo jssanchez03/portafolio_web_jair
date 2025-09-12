@@ -66,12 +66,9 @@ export const Experience = () => {
         <div data-aos="fade-up">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <div className="flex items-center justify-center mb-4">
-              <Briefcase className="w-8 h-8 mr-3" style={{ color: 'var(--accent)' }} />
-              <h2 className="text-3xl md:text-4xl font-bold" style={{ color: 'var(--fg)' }}>
-                {t('experience.title')}
-              </h2>
-            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--fg)' }}>
+              {t('experience.title')}
+            </h2>
             <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--muted)' }}>
               {t('experience.subtitle')}
             </p>
@@ -92,7 +89,7 @@ export const Experience = () => {
                   className="relative"
                 >
                   {/* Timeline Dot - Responsive */}
-                  <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 -translate-y-1/2 top-8 md:top-1/2">
+                  <div className="absolute left-4 -translate-x-1/2 md:left-1/2 md:-translate-x-1/2 -translate-y-1/2 top-8 md:top-1/2">
                     <div className={`w-4 h-4 rounded-full ${getTypeColor(exp.type)} border-4 border-white shadow-lg`}></div>
                   </div>
 

@@ -81,6 +81,24 @@ export const Projects = () => {
           img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757614463/Captura_de_pantalla_2025-09-11_131041_d6ezbm.png",
           url: "https://evaluacion.istla-sigala.edu.ec/",
           height: 450
+        },
+        {
+          id: "1-10",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757614451/Captura_de_pantalla_2025-09-11_131017_i75ri5.png",
+          url: "https://evaluacion.istla-sigala.edu.ec/",
+          height: 520
+        },
+        {
+          id: "1-11",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757713622/Captura_de_pantalla_2025-09-12_163906_drxhif.png",
+          url: "https://evaluacion.istla-sigala.edu.ec/",
+          height: 500
+        },
+        {
+          id: "1-12",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757713622/Captura_de_pantalla_2025-09-12_163928_ukvcnc.png",
+          url: "https://evaluacion.istla-sigala.edu.ec/",
+          height: 480
         }
       ]
     },
@@ -88,7 +106,7 @@ export const Projects = () => {
       id: 2,
       title: t('projects.project2.title'),
       description: t('projects.project2.description'),
-      image: "/api/placeholder/400/250",
+      image: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757712733/Screenshot_20250912_160640_wxfbtc.jpg",
       technologies: ["NFC", "Flutter", "Dart", "Material Design"],
       liveUrl: "#",
       githubUrl: "https://github.com/jssanchez03",
@@ -96,21 +114,51 @@ export const Projects = () => {
       gallery: [
         {
           id: "2-1",
-          img: "/api/placeholder/300/400",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757712733/Screenshot_20250912_160640_wxfbtc.jpg",
           url: "#",
-          height: 400
+          height: 620
         },
         {
           id: "2-2",
-          img: "/api/placeholder/300/350",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757712733/Screenshot_20250912_160646_oqrpqi.jpg",
           url: "#",
-          height: 350
+          height: 600
         },
         {
           id: "2-3",
-          img: "/api/placeholder/300/450",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757712733/Screenshot_20250912_163005_kzewfh.jpg",
           url: "#",
-          height: 450
+          height: 640
+        },
+        {
+          id: "2-4",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757712733/Screenshot_20250912_160751_eupdwt.jpg",
+          url: "#",
+          height: 600
+        },
+        {
+          id: "2-5",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757712735/Screenshot_20250912_162711_wmm2la.jpg",
+          url: "#",
+          height: 620
+        },
+        {
+          id: "2-6",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757712734/Screenshot_20250912_160819_ydwo0i.jpg",
+          url: "#",
+          height: 600
+        },
+        {
+          id: "2-7",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757712735/Screenshot_20250912_162847_us8eh7.jpg",
+          url: "#",
+          height: 640
+        },
+        {
+          id: "2-8",
+          img: "https://res.cloudinary.com/dq8at3uoc/image/upload/v1757712734/Screenshot_20250912_162646_Tags_w9rjn6.jpg",
+          url: "#",
+          height: 600
         }
       ]
     }
@@ -462,7 +510,7 @@ export const Projects = () => {
             className="text-center mt-12"
           >
             <a
-              href="https://github.com/jssanchez03" // Replace with your GitHub profile
+              href="https://github.com/jssanchez03?tab=repositories" // Replace with your GitHub profile
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border-2 font-semibold rounded-full"

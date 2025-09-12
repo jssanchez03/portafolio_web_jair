@@ -13,26 +13,24 @@ export const LanguageSwitcher = () => {
   return (
     <button
       onClick={toggleLanguage}
-      className="group flex items-center gap-2 p-2 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 relative overflow-hidden"
-      style={{ 
-        background: 'var(--card-bg)', 
-        color: 'var(--fg)',
-        border: '1px solid var(--border)'
+      className="group relative inline-flex items-center gap-1 px-3 py-2 rounded-full transition-all duration-200 hover:scale-105 active:scale-95 overflow-hidden backdrop-blur-sm text-[var(--fg)] whitespace-nowrap"
+      style={{
+        background: 'color-mix(in srgb, var(--primary) 18%, transparent)',
+        border: '1px solid',
+        borderColor: 'color-mix(in srgb, var(--primary) 35%, transparent)'
       }}
       data-aos="zoom-in"
       aria-label="Toggle language"
       onMouseEnter={(e) => {
         const target = e.currentTarget as HTMLButtonElement;
-        target.style.background = 'var(--primary)';
-        target.style.color = 'white';
-        target.style.borderColor = 'var(--primary)';
-        target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+        target.style.background = 'color-mix(in srgb, var(--primary) 28%, transparent)';
+        target.style.borderColor = 'color-mix(in srgb, var(--primary) 45%, transparent)';
+        target.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.12)';
       }}
       onMouseLeave={(e) => {
         const target = e.currentTarget as HTMLButtonElement;
-        target.style.background = 'var(--card-bg)';
-        target.style.color = 'var(--fg)';
-        target.style.borderColor = 'var(--border)';
+        target.style.background = 'color-mix(in srgb, var(--primary) 18%, transparent)';
+        target.style.borderColor = 'color-mix(in srgb, var(--primary) 35%, transparent)';
         target.style.boxShadow = 'none';
       }}
     >

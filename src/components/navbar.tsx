@@ -61,7 +61,7 @@ export const Navbar = () => {
           padding: '8px 16px'
         }}
       >
-        <div className="flex items-center space-x-0.5">
+        <div className="flex items-center space-x-0.5 flex-nowrap">
           {navItems.map((item) => (
             <Link
               key={item.to}
@@ -69,7 +69,7 @@ export const Navbar = () => {
               smooth={true}
               duration={500}
               offset={-70}
-              className="px-3 py-2 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer hover:bg-white/20 hover:scale-105"
+              className="px-3 py-2 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer hover:bg-white/20 hover:scale-105 whitespace-nowrap"
               style={{ color: 'var(--fg)' }}
             >
               {item.name}
@@ -82,7 +82,7 @@ export const Navbar = () => {
             download="Jair_Sanchez_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded-full transition-all duration-200 hover:scale-105 text-xs ml-1"
+            className="inline-flex items-center gap-1 px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded-full transition-all duration-200 hover:scale-105 text-xs ml-1 whitespace-nowrap"
           >
             <Download className="w-3 h-3" />
             {t('nav.downloadCV')}

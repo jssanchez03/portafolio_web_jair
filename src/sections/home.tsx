@@ -3,6 +3,7 @@ import { Link } from 'react-scroll';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import LightRays from '../components/LightRays';
 import TextType from '../components/TextType';
+import SplitText from '../components/SplitText';
 
 export const Home = () => {
   const { t } = useTranslation();
@@ -46,23 +47,37 @@ export const Home = () => {
           {/* Main Content */}
           <div className="mb-2">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-1 text-[var(--fg)] leading-tight">
-              <span 
-                data-aos="fade-up" 
-                data-aos-delay="100"
-                data-aos-duration="500"
-                className="text-2xl md:text-4xl lg:text-5xl"
-              >
-                {t('home.greeting')}
-              </span>
+              <SplitText
+                text={t('home.greeting')}
+                tag="span"
+                className="text-xl md:text-3xl lg:text-4xl text-[var(--fg)] block"
+                delay={80}
+                duration={0.5}
+                ease="power2.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 30 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.3}
+                rootMargin="-50px"
+                textAlign="center"
+              />
               <br />
-              <span 
-                data-aos="fade-up" 
-                data-aos-delay="200"
-                data-aos-duration="500"
-                className="bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent"
-              >
-                Jair Sánchez
-              </span>
+              <div className="bg-gradient-to-r from-indigo-500 to-purple-600 bg-clip-text text-transparent">
+                <SplitText
+                  text="Jair Sánchez"
+                  tag="span"
+                  className="block"
+                  delay={60}
+                  duration={0.6}
+                  ease="power2.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.3}
+                  rootMargin="-50px"
+                  textAlign="center"
+                />
+              </div>
             </h1>
           </div>
 

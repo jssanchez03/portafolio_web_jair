@@ -113,9 +113,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         <X className="w-6 h-6" />
       </button>
 
-      {/* Gallery Content - Full Screen */}
-      <div className="w-full h-full flex items-center justify-center p-8">
-        {children}
+      {/* Gallery Content - Full Screen with Scrolling */}
+      <div className="w-full h-full overflow-y-auto p-4 md:p-8">
+        <div className="min-h-full flex items-start justify-center">
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -408,8 +408,8 @@ export const Projects = () => {
             }}
           >
             {modalProject && modalProject.gallery && (
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="w-full h-full max-w-6xl">
+              <div className="w-full max-w-6xl mx-auto">
+                <div className="w-full" style={{ minHeight: '60vh' }}>
                   <Masonry
                     items={modalProject.gallery}
                     ease="power3.out"

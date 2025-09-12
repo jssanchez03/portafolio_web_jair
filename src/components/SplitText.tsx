@@ -58,12 +58,16 @@ const SplitText: React.FC<SplitTextProps> = ({
         _rbsplitInstance?: GSAPSplitText;
       };
 
+      // Always revert previous instance when text changes
       if (el._rbsplitInstance) {
         try {
           el._rbsplitInstance.revert();
         } catch (_) {}
         el._rbsplitInstance = undefined;
       }
+
+      // Clear any existing content and reset
+      el.innerHTML = text;
 
       const startPct = (1 - threshold) * 100;
       const marginMatch = /^(-?\d+(?:\.\d+)?)(px|em|rem|%)?$/.exec(rootMargin);
@@ -164,7 +168,8 @@ const SplitText: React.FC<SplitTextProps> = ({
         fontsLoaded,
         onLetterAnimationComplete
       ],
-      scope: ref
+      scope: ref,
+      revertOnUpdate: true
     }
   );
 

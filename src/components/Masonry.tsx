@@ -268,8 +268,18 @@ const Masonry: React.FC<MasonryProps> = ({
     }
   };
 
+  const containerHeight = useMemo(() => {
+    if (grid.length === 0) return 0;
+    const maxHeight = Math.max(...grid.map(item => item.y + item.h));
+    return maxHeight + 16; // Add some padding at the bottom
+  }, [grid]);
+
   return (
-    <div ref={containerRef} className="relative w-full h-full">
+    <div 
+      ref={containerRef} 
+      className="relative w-full" 
+      style={{ height: containerHeight || 'auto', minHeight: '200px' }}
+    >
       {grid.map(item => (
         <div
           key={item.id}

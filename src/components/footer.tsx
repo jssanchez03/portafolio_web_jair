@@ -83,8 +83,8 @@ export const Footer = () => {
                     style={{ color: 'var(--muted)' }}
                     onMouseEnter={(e) => {
                       const target = e.currentTarget as HTMLAnchorElement;
-                      target.style.color = 'var(--muted-teal)';
-                      target.style.textShadow = '0 0 8px var(--muted-teal)';
+                      target.style.color = '#615fff';
+                      target.style.textShadow = '0 0 8px #615fff';
                     }}
                     onMouseLeave={(e) => {
                       const target = e.currentTarget as HTMLAnchorElement;
@@ -117,7 +117,7 @@ export const Footer = () => {
                     style={{ background: 'var(--card-bg)', color: 'var(--fg)' }}
                     onMouseEnter={(e) => {
                       const target = e.currentTarget as HTMLAnchorElement;
-                      target.style.background = 'var(--accent)';
+                      target.style.background = '#615fff';
                       target.style.color = 'white';
                     }}
                     onMouseLeave={(e) => {

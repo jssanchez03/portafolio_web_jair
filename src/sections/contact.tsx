@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
 
 export const Contact = () => {
   const { t } = useTranslation();
@@ -9,15 +9,15 @@ export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState('');
-  const [formErrors, setFormErrors] = useState<{[key: string]: string}>({});
+  const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
 
   // EmailJS configuration - Replace with your actual values
   const SERVICE_ID = 'service_cobfowa'; // Tu Service ID de EmailJS
   const TEMPLATE_ID = 'template_zgf0egz'; // Tu Template ID
   const PUBLIC_KEY = 'HvYCW1S8mHn0TXeqO'; // Tu Public Key
 
-  const validateForm = (formData: FormData): {[key: string]: string} => {
-    const errors: {[key: string]: string} = {};
+  const validateForm = (formData: FormData): { [key: string]: string } => {
+    const errors: { [key: string]: string } = {};
     const name = formData.get('name') as string;
     const email = formData.get('email') as string;
     const message = formData.get('message') as string;
@@ -47,7 +47,7 @@ export const Contact = () => {
 
     const formData = new FormData(form.current);
     const validationErrors = validateForm(formData);
-    
+
     if (Object.keys(validationErrors).length > 0) {
       setFormErrors(validationErrors);
       return;
@@ -91,7 +91,7 @@ export const Contact = () => {
       icon: MapPin,
       label: t('contact.location'),
       value: "Santo Domingo, Ecuador",
-      href: "#"
+      href: "https://maps.app.goo.gl/urvYSLDbPr639UXTA"
     }
   ];
 
@@ -171,14 +171,14 @@ export const Contact = () => {
                     minLength={2}
                     maxLength={50}
                     className="w-full px-4 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:scale-[1.02]"
-                    style={{ 
-                      border: `2px solid ${formErrors.name ? '#ef4444' : 'var(--border)'}`, 
-                      background: 'var(--card-bg)', 
+                    style={{
+                      border: `2px solid ${formErrors.name ? '#ef4444' : 'var(--border)'}`,
+                      background: 'var(--card-bg)',
                       color: 'var(--fg)'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = formErrors.name ? '#ef4444' : 'var(--primary)';
-                      e.target.style.boxShadow = `0 0 0 3px ${formErrors.name ? 'rgba(239, 68, 68, 0.2)' : 'rgba(99, 102, 241, 0.2)'}`;
+                      e.target.style.borderColor = formErrors.name ? '#ef4444' : '#615fff';
+                      e.target.style.boxShadow = `0 0 0 3px ${formErrors.name ? 'rgba(239, 68, 68, 0.2)' : 'rgba(97, 95, 255, 0.2)'}`;
                     }}
                     onBlur={(e) => {
                       e.target.style.borderColor = formErrors.name ? '#ef4444' : 'var(--border)';
@@ -186,7 +186,7 @@ export const Contact = () => {
                     }}
                     onChange={() => {
                       if (formErrors.name) {
-                        setFormErrors(prev => ({...prev, name: ''}));
+                        setFormErrors(prev => ({ ...prev, name: '' }));
                       }
                     }}
                     placeholder={t('contact.namePlaceholder')}
@@ -209,14 +209,14 @@ export const Contact = () => {
                     name="email"
                     required
                     className="w-full px-4 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:scale-[1.02]"
-                    style={{ 
-                      border: `2px solid ${formErrors.email ? '#ef4444' : 'var(--border)'}`, 
-                      background: 'var(--card-bg)', 
+                    style={{
+                      border: `2px solid ${formErrors.email ? '#ef4444' : 'var(--border)'}`,
+                      background: 'var(--card-bg)',
                       color: 'var(--fg)'
                     }}
                     onFocus={(e) => {
-                      e.target.style.borderColor = formErrors.email ? '#ef4444' : 'var(--primary)';
-                      e.target.style.boxShadow = `0 0 0 3px ${formErrors.email ? 'rgba(239, 68, 68, 0.2)' : 'rgba(99, 102, 241, 0.2)'}`;
+                      e.target.style.borderColor = formErrors.email ? '#ef4444' : '#615fff';
+                      e.target.style.boxShadow = `0 0 0 3px ${formErrors.email ? 'rgba(239, 68, 68, 0.2)' : 'rgba(97, 95, 255, 0.2)'}`;
                     }}
                     onBlur={(e) => {
                       e.target.style.borderColor = formErrors.email ? '#ef4444' : 'var(--border)';
@@ -224,7 +224,7 @@ export const Contact = () => {
                     }}
                     onChange={() => {
                       if (formErrors.email) {
-                        setFormErrors(prev => ({...prev, email: ''}));
+                        setFormErrors(prev => ({ ...prev, email: '' }));
                       }
                     }}
                     placeholder={t('contact.emailPlaceholder')}
@@ -250,14 +250,14 @@ export const Contact = () => {
                       minLength={10}
                       maxLength={500}
                       className="w-full px-4 py-3 rounded-lg resize-none transition-all duration-200 focus:outline-none focus:ring-2 focus:scale-[1.02]"
-                      style={{ 
-                        border: `2px solid ${formErrors.message ? '#ef4444' : 'var(--border)'}`, 
-                        background: 'var(--card-bg)', 
+                      style={{
+                        border: `2px solid ${formErrors.message ? '#ef4444' : 'var(--border)'}`,
+                        background: 'var(--card-bg)',
                         color: 'var(--fg)'
                       }}
                       onFocus={(e) => {
-                        e.target.style.borderColor = formErrors.message ? '#ef4444' : 'var(--primary)';
-                        e.target.style.boxShadow = `0 0 0 3px ${formErrors.message ? 'rgba(239, 68, 68, 0.2)' : 'rgba(99, 102, 241, 0.2)'}`;
+                        e.target.style.borderColor = formErrors.message ? '#ef4444' : '#615fff';
+                        e.target.style.boxShadow = `0 0 0 3px ${formErrors.message ? 'rgba(239, 68, 68, 0.2)' : 'rgba(97, 95, 255, 0.2)'}`;
                       }}
                       onBlur={(e) => {
                         e.target.style.borderColor = formErrors.message ? '#ef4444' : 'var(--border)';
@@ -269,7 +269,7 @@ export const Contact = () => {
                           messageCount.textContent = e.target.value.length.toString();
                         }
                         if (formErrors.message) {
-                          setFormErrors(prev => ({...prev, message: ''}));
+                          setFormErrors(prev => ({ ...prev, message: '' }));
                         }
                       }}
                       placeholder={t('contact.messagePlaceholder')}
@@ -292,34 +292,41 @@ export const Contact = () => {
                   </div>
                 )}
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full px-8 py-4 font-semibold rounded-full shadow-lg transition-all duration-300 flex items-center justify-center gap-2 hover:scale-[1.02] hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-white"
-                  style={{ background: 'var(--primary)' }}
-                  onMouseEnter={(e) => {
-                    if (!isSubmitting) {
-                      e.currentTarget.style.background = 'var(--accent)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!isSubmitting) {
-                      e.currentTarget.style.background = 'var(--primary)';
-                    }
-                  }}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
-                      {t('contact.sending')}
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      {t('contact.send')}
-                    </>
-                  )}
-                </button>
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="uiverse-send-btn disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        <span>{t('contact.sending')}</span>
+                      </>
+                    ) : (
+                      <>
+                        <div className="svg-wrapper-1">
+                          <div className="svg-wrapper">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              width="20"
+                              height="20"
+                              className="send-svg"
+                            >
+                              <path fill="none" d="M0 0h24v24H0z"></path>
+                              <path
+                                fill="currentColor"
+                                d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+                              ></path>
+                            </svg>
+                          </div>
+                        </div>
+                        <span className="button-text">{t('contact.send')}</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </form>
             </div>
           </div>

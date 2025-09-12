@@ -194,7 +194,7 @@ export const Certificates = () => {
                     <div className="space-y-2">
                       {/* Duration */}
                       <div 
-                        className="flex items-center gap-2 px-3 py-2 rounded-lg"
+                        className="flex items-center gap-2 px-3 py-2 rounded-full"
                         style={{ 
                           background: 'var(--section-bg)', 
                           border: '1px solid var(--border)' 
@@ -209,7 +209,7 @@ export const Certificates = () => {
                       {/* Type */}
                       {certificate.type && (
                         <div 
-                          className="flex items-center gap-2 px-3 py-2 rounded-lg"
+                          className="flex items-center gap-2 px-3 py-2 rounded-full"
                           style={{ 
                             background: 'var(--section-bg)', 
                             border: '1px solid var(--border)' 
@@ -230,7 +230,7 @@ export const Certificates = () => {
                       href={certificate.credentialUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-lg w-full"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold rounded-full w-full"
                       style={{
                         background: 'var(--primary)',
                         color: 'white',
@@ -259,20 +259,22 @@ export const Certificates = () => {
           {/* View More Button */}
           <div className="text-center mt-12">
             <button 
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-indigo-500 text-indigo-500 font-semibold rounded-xl"
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 font-semibold rounded-full"
               style={{
+                borderColor: '#615fff',
+                color: '#615fff',
                 background: 'transparent',
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 transform: 'scale(1)'
               }}
               onMouseEnter={(e: MouseEvent<HTMLButtonElement>) => {
-                e.currentTarget.style.background = '#6366f1';
+                e.currentTarget.style.background = '#615fff';
                 e.currentTarget.style.color = 'white';
                 e.currentTarget.style.transform = 'scale(1.05)';
               }}
               onMouseLeave={(e: MouseEvent<HTMLButtonElement>) => {
                 e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.color = '#6366f1';
+                e.currentTarget.style.color = '#615fff';
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >

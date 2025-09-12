@@ -2,18 +2,27 @@
 
 /* Theme variables */
 :root {
-  --bg: #f8fafc; /* slate-50 */
-  --bg-rgb: 248, 250, 252; /* RGB values for bg */
-  --fg: #1e293b; /* slate-800 */
+  --bg: #f8fafc;
+  /* slate-50 */
+  --bg-rgb: 248, 250, 252;
+  /* RGB values for bg */
+  --fg: #1e293b;
+  /* slate-800 */
   --hero-gradient: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%);
-  --section-bg: #f1f5f9; /* slate-100 */
-  --section-alt-bg: #e2e8f0; /* slate-200 */
+  --section-bg: #f1f5f9;
+  /* slate-100 */
+  --section-alt-bg: #e2e8f0;
+  /* slate-200 */
   --card-bg: #ffffff;
-  --border: #cbd5e1; /* slate-300 */
-  --muted: #64748b; /* slate-500 */
-  --accent: #0f172a; /* slate-950 */
-  --primary: #6366f1; /* indigo-500 */
-  
+  --border: #cbd5e1;
+  /* slate-300 */
+  --muted: #64748b;
+  /* slate-500 */
+  --accent: #0f172a;
+  /* slate-950 */
+  --primary: #615fff;
+  /* custom purple */
+
   /* Section-specific gradients for light mode */
   --home-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
   --about-gradient: linear-gradient(135deg, #fef7ff 0%, #f3e8ff 50%, #e9d5ff 100%);
@@ -25,18 +34,26 @@
 }
 
 html.dark {
-  --bg: #0f172a; /* slate-950 */
-  --bg-rgb: 15, 23, 42; /* RGB values for dark bg */
-  --fg: #f1f5f9; /* slate-100 */
+  --bg: #0f172a;
+  /* slate-950 */
+  --bg-rgb: 15, 23, 42;
+  /* RGB values for dark bg */
+  --fg: #f1f5f9;
+  /* slate-100 */
   --hero-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   --section-bg: #0f172a;
-  --section-alt-bg: #1e293b; /* slate-800 */
+  --section-alt-bg: #1e293b;
+  /* slate-800 */
   --card-bg: #1e293b;
-  --border: #334155; /* slate-700 */
-  --muted: #9ca3af; /* gray-400 */
-  --accent: #60a5fa; /* blue-400 */
-  --primary: #8b5cf6; /* violet-500 */
-  
+  --border: #334155;
+  /* slate-700 */
+  --muted: #9ca3af;
+  /* gray-400 */
+  --accent: #60a5fa;
+  /* blue-400 */
+  --primary: #615fff;
+  /* custom purple */
+
   /* Section-specific gradients for dark mode */
   --home-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   --about-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #3730a3 100%);
@@ -48,7 +65,8 @@ html.dark {
 }
 
 /* Prevent horizontal scroll */
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
@@ -62,11 +80,12 @@ body {
 }
 
 /* Help browsers pick correct native colors (forms/scrollbars) */
-html { 
-  color-scheme: light; 
+html {
+  color-scheme: light;
 }
-html.dark { 
-  color-scheme: dark; 
+
+html.dark {
+  color-scheme: dark;
 }
 
 /* Custom scrollbar */
@@ -111,15 +130,32 @@ html.dark ::selection {
 }
 
 /* Focus styles */
-*:focus { 
-  outline: none; 
+*:focus {
+  outline: none;
 }
-*:focus-visible { 
-  outline: 2px solid #3b82f6; 
-  outline-offset: 2px; 
+
+*:focus-visible {
+  outline: 2px solid #615fff;
+  outline-offset: 2px;
 }
-html.dark *:focus-visible { 
-  outline-offset: 2px; 
+
+html.dark *:focus-visible {
+  outline-offset: 2px;
+}
+
+/* Remove default focus ring for form elements */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove browser default focus styles */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none !important;
 }
 
 /* Custom animations */
@@ -128,6 +164,7 @@ html.dark *:focus-visible {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -139,6 +176,7 @@ html.dark *:focus-visible {
     opacity: 0;
     transform: translateY(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -150,6 +188,7 @@ html.dark *:focus-visible {
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -161,6 +200,7 @@ html.dark *:focus-visible {
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -168,9 +208,12 @@ html.dark *:focus-visible {
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -217,6 +260,7 @@ html.dark *:focus-visible {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+  line-clamp: 1;
 }
 
 .line-clamp-2 {
@@ -224,6 +268,7 @@ html.dark *:focus-visible {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .line-clamp-3 {
@@ -231,12 +276,13 @@ html.dark *:focus-visible {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 
 /* Custom button styles */
 .btn-primary {
   padding: 0.75rem 1.5rem;
-  background-color: #2563eb;
+  background-color: #615fff;
   color: white;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -245,7 +291,7 @@ html.dark *:focus-visible {
 }
 
 .btn-primary:hover {
-  background-color: #1d4ed8;
+  background-color: #4c46d9;
   transform: scale(1.05);
 }
 
@@ -270,14 +316,14 @@ html.dark .btn-secondary {
 }
 
 .btn-secondary:hover {
-  border-color: #2563eb;
-  color: #2563eb;
+  border-color: #615fff;
+  color: #615fff;
   transform: scale(1.05);
 }
 
 html.dark .btn-secondary:hover {
-  border-color: #60a5fa;
-  color: #60a5fa;
+  border-color: #615fff;
+  color: #615fff;
   transform: scale(1.05);
 }
 
@@ -296,8 +342,13 @@ html.dark .btn-secondary:hover {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive text sizes */
@@ -306,6 +357,7 @@ html.dark .btn-secondary:hover {
     font-size: 1.875rem;
     line-height: 2.25rem;
   }
+
   .text-responsive-lg {
     font-size: 1.5rem;
     line-height: 2rem;
@@ -317,20 +369,168 @@ html.dark .btn-secondary:hover {
     font-size: 3.75rem;
     line-height: 1;
   }
+
   .text-responsive-lg {
     font-size: 2.25rem;
     line-height: 2.5rem;
   }
 }
 
-/* Print styles */
-@media print {
-  .no-print {
-    display: none !important;
+/* Uiverse Send Button Styles */
+.uiverse-send-btn {
+  font-family: inherit;
+  font-size: 16px;
+  background: #615fff;
+  color: white;
+  padding: 0.7em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* Alineación inicial a la izquierda */
+  border: none;
+  border-radius: 16px;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+  position: relative;
+  min-width: 160px;
+  /* Ancho mínimo para mantener el tamaño original */
+  height: 48px;
+  /* Altura fija para evitar cambios de tamaño */
+  overflow: hidden;
+}
+
+.uiverse-send-btn .svg-wrapper-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  /* Espacio entre ícono y texto */
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.uiverse-send-btn .svg-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uiverse-send-btn .button-text {
+  display: inline-block;
+  transition: all 0.0s ease-out;
+  white-space: nowrap;
+}
+
+.uiverse-send-btn .send-svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  flex-shrink: 0;
+}
+
+/* Estados de hover - aquí está la magia */
+.uiverse-send-btn:hover:not(:disabled) {
+  justify-content: center;
+  /* Centrar contenido en hover */
+  background: #4c46d9;
+}
+
+.uiverse-send-btn:hover:not(:disabled) .svg-wrapper-1 {
+  margin-right: 0;
+  /* Quitar margen en hover */
+}
+
+.uiverse-send-btn:hover:not(:disabled) .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.uiverse-send-btn:hover:not(:disabled) .send-svg {
+  transform: rotate(45deg) scale(1.25);
+}
+
+.uiverse-send-btn:hover:not(:disabled) .button-text {
+  opacity: 0;
+  transform: translateX(30px);
+  position: absolute;
+  /* Sacar del flujo para no interferir */
+  pointer-events: none;
+}
+
+.uiverse-send-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+/* Estados deshabilitados */
+.uiverse-send-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.uiverse-send-btn:disabled:hover .send-svg {
+  transform: none;
+}
+
+.uiverse-send-btn:disabled:hover .button-text {
+  transform: none;
+  opacity: 1;
+}
+
+/* Animación de vuelo */
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
   }
 
-  body {
-    color: black !important;
-    background-color: white !important;
+  to {
+    transform: translateY(-0.1em);
   }
+}
+
+/* Para el estado de carga */
+.uiverse-send-btn .animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estados de hover - aquí está la magia */
+.uiverse-send-btn:hover:not(:disabled) {
+  justify-content: center;
+  /* Centrar contenido en hover */
+  background: #4c46d9;
+  transform: scale(1.02) translateY(-2px);
+}
+
+.uiverse-send-btn:hover:not(:disabled) .svg-wrapper-1 {
+  margin-right: 0;
+  /* Quitar margen en hover */
+}
+
+.uiverse-send-btn:hover:not(:disabled) .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.uiverse-send-btn:hover:not(:disabled) .send-svg {
+  transform: rotate(45deg) scale(1.1);
+}
+
+.uiverse-send-btn:hover:not(:disabled) .button-text {
+  opacity: 0;
+  transform: translateX(30px);
+  position: absolute;
+  /* Sacar del flujo para no interferir */
+  pointer-events: none;
+}
+
+.uiverse-send-btn:active:not(:disabled) {
+  transform: scale(0.98) translateY(0px);
 }

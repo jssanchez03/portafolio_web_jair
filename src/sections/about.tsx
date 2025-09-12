@@ -81,7 +81,7 @@ export const About = () => {
               >
                 <h3 
                   className="text-xl font-semibold mb-4" 
-                  style={{ color: 'var(--fg)' }}
+                  style={{ color: '#615fff' }}
                 >
                   {t('about.coretech')}
                 </h3>
@@ -111,7 +111,7 @@ export const About = () => {
               >
                 <h3 
                   className="text-xl font-semibold mb-4" 
-                  style={{ color: 'var(--fg)' }}
+                  style={{ color: '#615fff' }}
                 >
                   {t('about.softSkills')}
                 </h3>

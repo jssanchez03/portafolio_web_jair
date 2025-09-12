@@ -371,25 +371,25 @@ export const Projects = () => {
                         }}
                         className="flex items-center gap-2 px-4 py-2.5 border-2 text-sm font-semibold rounded-full shadow-lg"
                         style={{ 
-                          borderColor: 'var(--muted)', 
-                          color: 'var(--muted)', 
+                          borderColor: '#615fff', 
+                          color: '#615fff', 
                           background: 'transparent',
                           transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                           transform: 'scale(1)'
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'var(--muted)';
-                          e.currentTarget.style.color = 'var(--bg)';
+                          e.currentTarget.style.background = '#615fff';
+                          e.currentTarget.style.color = 'white';
                           e.currentTarget.style.transform = 'scale(1.03)';
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.color = 'var(--muted)';
+                          e.currentTarget.style.color = '#615fff';
                           e.currentTarget.style.transform = 'scale(1)';
                         }}
                       >
                         <Eye className="w-4 h-4" />
-                        {t('projects.viewGallery')}
+                        {t('projects.viewScreenshots')}
                       </button>
                     </div>
                   </div>
@@ -465,19 +465,22 @@ export const Projects = () => {
               href="https://github.com/jssanchez03" // Replace with your GitHub profile
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 border-2 border-indigo-500 text-indigo-500 font-semibold rounded-full"
+              className="inline-flex items-center gap-2 px-6 py-3 border-2 font-semibold rounded-full"
               style={{
+                borderColor: '#615fff',
+                color: '#615fff',
+                background: 'transparent',
                 transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                 transform: 'scale(1)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#6366f1';
+                e.currentTarget.style.background = '#615fff';
                 e.currentTarget.style.color = 'white';
                 e.currentTarget.style.transform = 'scale(1.05)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.color = '#6366f1';
+                e.currentTarget.style.color = '#615fff';
                 e.currentTarget.style.transform = 'scale(1)';
               }}
             >

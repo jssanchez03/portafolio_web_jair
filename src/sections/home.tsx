@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-scroll';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import LightRays from '../components/LightRays';
+import TextType from '../components/TextType';
 
 export const Home = () => {
   const { t } = useTranslation();
@@ -71,9 +72,20 @@ export const Home = () => {
             data-aos-duration="500"
             className="mb-4"
           >
-            <p className="text-base md:text-lg lg:text-xl mb-3 max-w-2xl mx-auto leading-relaxed font-light text-center" style={{ color: 'color-mix(in srgb, var(--fg) 70%, transparent)' }}>
-              {t('home.subtitle')}
-            </p>
+            <div className="text-base md:text-lg lg:text-xl mb-3 max-w-2xl mx-auto leading-relaxed font-light text-center" style={{ color: 'color-mix(in srgb, var(--fg) 70%, transparent)' }}>
+              <TextType
+                text={t('home.typingTexts', { returnObjects: true }) as string[]}
+                typingSpeed={80}
+                deletingSpeed={50}
+                pauseDuration={2500}
+                loop={true}
+                showCursor={true}
+                cursorCharacter="|"
+                cursorClassName="text-indigo-500"
+                startOnVisible={true}
+                className="inline-block"
+              />
+            </div>
           </div>
 
           {/* CTA Buttons */}

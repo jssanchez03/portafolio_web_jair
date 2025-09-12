@@ -35,14 +35,14 @@ const DEFAULT_COLOR = '#ffffff';
 // Theme-aware color palette
 const THEME_COLORS = {
   light: {
-    primary: '#4338ca',    // Dark indigo - much darker for contrast
-    secondary: '#6d28d9',  // Dark purple - visible against light bg
+    primary: '#312e81',    // Dark indigo - better visibility
+    secondary: '#4c1d95',  // Dark purple - enhanced contrast
     accent: '#7c2d12'      // Dark brown-red - strong contrast
   },
   dark: {
-    primary: '#00ffff',    // Cyan - bright and visible in dark
-    secondary: '#60a5fa',  // Blue - complementary
-    accent: '#3b82f6'      // Deeper blue
+    primary: '#8b5cf6',    // Soft purple - matches design theme
+    secondary: '#6366f1',  // Indigo - complementary to purple
+    accent: '#3b82f6'      // Blue - subtle accent
   }
 };
 
@@ -84,7 +84,7 @@ const LightRays: React.FC<LightRaysProps> = ({
   lightSpread = 1,
   rayLength = 2,
   pulsating = false,
-  fadeDistance = 1.0,
+  fadeDistance = 2.0,
   saturation = 1.0,
   followMouse = true,
   mouseInfluence = 0.1,
@@ -109,8 +109,23 @@ const LightRays: React.FC<LightRaysProps> = ({
   // Get theme-aware color
   const getThemeColor = () => {
     if (!useThemeColors) return raysColor;
-    const colors = isDark ? THEME_COLORS.dark : THEME_COLORS.light;
-    return colors.primary;
+    const currentRaysColor = useThemeColors 
+    ? (isDark ? THEME_COLORS.dark.primary : THEME_COLORS.light.primary)
+    : raysColor;
+    return currentRaysColor;
+  };
+
+  // Enhanced visibility settings based on theme
+  const themeSettings = isDark ? {
+    intensity: 1.5,        // Moderate intensity for dark mode
+    brightness: 1.2,       // Balanced brightness
+    contrast: 1.2,         // Subtle contrast
+    glow: 0.6             // Gentle glow effect
+  } : {
+    intensity: 2.8,        // Higher intensity for light mode visibility
+    brightness: 2.0,       // Maximum brightness for light backgrounds
+    contrast: 1.8,         // Strong contrast for light mode
+    glow: 1.2             // Enhanced glow for light mode
   };
 
   const currentRaysColor = getThemeColor();
@@ -195,6 +210,10 @@ uniform vec2  mousePos;
 uniform float mouseInfluence;
 uniform float noiseAmount;
 uniform float distortion;
+uniform float intensity;
+uniform float brightness;
+uniform float contrast;
+uniform float glow;
 
 varying vec2 vUv;
 
@@ -245,24 +264,35 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
                rayStrength(rayPos, finalRayDir, coord, 22.3991, 18.0234,
                            1.1 * raysSpeed);
 
-  fragColor = rays1 * 0.5 + rays2 * 0.4;
+  fragColor = rays1 * 0.6 + rays2 * 0.5;
+
+  // Apply intensity multiplier for better visibility
+  fragColor *= intensity;
 
   if (noiseAmount > 0.0) {
     float n = noise(coord * 0.01 + iTime * 0.1);
     fragColor.rgb *= (1.0 - noiseAmount + noiseAmount * n);
   }
 
-  float brightness = 1.0 - (coord.y / iResolution.y);
-  fragColor.x *= 0.1 + brightness * 0.8;
-  fragColor.y *= 0.3 + brightness * 0.6;
-  fragColor.z *= 0.5 + brightness * 0.5;
+  // Enhanced brightness calculation with theme-aware adjustments
+  float brightnessGradient = 1.0 - (coord.y / iResolution.y);
+  fragColor.x *= 0.2 + brightnessGradient * brightness * 0.9;
+  fragColor.y *= 0.4 + brightnessGradient * brightness * 0.7;
+  fragColor.z *= 0.6 + brightnessGradient * brightness * 0.6;
+
+  // Apply contrast enhancement
+  fragColor.rgb = pow(fragColor.rgb, vec3(1.0 / contrast));
 
   if (saturation != 1.0) {
     float gray = dot(fragColor.rgb, vec3(0.299, 0.587, 0.114));
     fragColor.rgb = mix(vec3(gray), fragColor.rgb, saturation);
   }
 
-  fragColor.rgb *= raysColor;
+  // Apply glow effect for better visibility
+  fragColor.rgb *= raysColor * (1.0 + glow * 0.5);
+  
+  // Add subtle bloom effect
+  fragColor.rgb += fragColor.rgb * fragColor.rgb * glow * 0.3;
 }
 
 void main() {
@@ -288,7 +318,11 @@ void main() {
         mousePos: { value: [0.5, 0.5] },
         mouseInfluence: { value: mouseInfluence },
         noiseAmount: { value: noiseAmount },
-        distortion: { value: distortion }
+        distortion: { value: distortion },
+        intensity: { value: themeSettings.intensity },
+        brightness: { value: themeSettings.brightness },
+        contrast: { value: themeSettings.contrast },
+        glow: { value: themeSettings.glow }
       };
       uniformsRef.current = uniforms;
 

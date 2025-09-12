@@ -11,15 +11,16 @@
   },
   "home": {
     "greeting": "Hi! I'm",
-    "name": "Jair",
-    "title": "Full Stack Developer",
     "subtitle": "Creating amazing digital experiences with clean code and modern design",
-    "cta": "View my work",
-    "contact": "Contact me",
-    "viewWork": "View My Work",
-    "getInTouch": "Get In Touch",
-    "downloadCV": "Download CV",
-    "scrollDown": "Scroll Down"
+    "typingTexts": [
+      "Creating amazing digital experiences",
+      "Developing modern web solutions",
+      "Designing intuitive interfaces",
+      "Building scalable applications"
+    ],
+    "viewWork": "View my work",
+    "getInTouch": "Get in touch",
+    "scrollDown": "Scroll down"
   },
   "about": {
     "title": "About me",
@@ -84,11 +85,63 @@
     "folio": "Folio",
     "location": "Location",
     "type": "Type",
-    "viewMore": "View more certificates"
+    "viewMore": "View more certificates",
+    "certificates": {
+      "cert1": {
+        "title": "Database Administrator",
+        "issuer": "Capacítate para el Empleo",
+        "type": "Course"
+      },
+      "cert2": {
+        "title": "Programming Logic",
+        "issuer": "Capacítate para el Empleo",
+        "type": "Course"
+      },
+      "cert3": {
+        "title": "Introduction to Programming",
+        "issuer": "Universidad de las Fuerzas Armadas ESPE",
+        "type": "Course"
+      },
+      "cert4": {
+        "title": "Real Functions and their Applications to Engineering",
+        "issuer": "Universidad Técnica de Manabí",
+        "type": "Webinar"
+      }
+    }
   },
   "experience": {
     "title": "Experience",
-    "subtitle": "My professional journey and key achievements"
+    "subtitle": "My professional journey and key achievements",
+    "experiences": {
+      "exp1": {
+        "title": "Full Stack Developer",
+        "company": "Instituto Superior Tecnológico Los Andes (ISTLA)",
+        "location": "Santo Domingo, Ecuador",
+        "period": "March 2025 – August 2025",
+        "description": "Developed a teacher evaluation web system in production, with authentication, dynamic forms and role-based panels. Generated real-time reports (Node.js, React, MySQL) that improved academic decision-making."
+      },
+      "exp2": {
+        "title": "Software Developer (Internship)",
+        "company": "Santo Domingo Fire Department (Municipal GAD)",
+        "location": "Santo Domingo, Ecuador",
+        "period": "September 2024 – November 2024",
+        "description": "Migrated a system from Python to PHP, unifying modules into a single web application. Implemented the incident management module, streamlining emergency registration and consultation."
+      },
+      "exp3": {
+        "title": "Mobile App Developer (Internship)",
+        "company": "iDrix Technology",
+        "location": "Santo Domingo, Ecuador",
+        "period": "April 2024 – July 2024",
+        "description": "Collaborated in mobile app development with Flutter, implementing NFC registration and reading. Contributed to UI design, backend connection and functional testing, improving user experience."
+      },
+      "exp4": {
+        "title": "UX/UI Designer (Training)",
+        "company": "Universidad de las Fuerzas Armadas ESPE",
+        "location": "Santo Domingo, Ecuador",
+        "period": "September 2023 – November 2023",
+        "description": "Designed interfaces and prototypes for a community emergency management app. Created user manuals and logo, facilitating solution adoption by the community."
+      }
+    }
   },
   "contact": {
     "title": "Contact me",
@@ -114,7 +167,14 @@
     "by": "by",
     "description": "Passionate developer creating innovative digital solutions with modern technologies and clean code.",
     "quickLinks": "Quick Links",
-    "connect": "Connect"
+    "connect": "Connect",
+    "roles": {
+      "fullstack": "Full Stack Developer",
+      "frontend": "Frontend Specialist",
+      "backend": "Backend Engineer",
+      "uiux": "UI/UX Designer",
+      "mobile": "Mobile Developer"
+    }
   },
   "common": {
     "loading": "Loading...",

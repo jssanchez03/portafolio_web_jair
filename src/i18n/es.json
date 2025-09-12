@@ -11,15 +11,16 @@
   },
   "home": {
     "greeting": "¡Hola! Soy",
-    "name": "Jair",
-    "title": "Desarrollador Full Stack",
     "subtitle": "Creando experiencias digitales increíbles con código limpio y diseño moderno",
-    "cta": "Ver mi trabajo",
-    "contact": "Contáctame",
-    "viewWork": "Ver Mi Trabajo",
+    "typingTexts": [
+      "Creando experiencias digitales increíbles",
+      "Desarrollando soluciones web modernas",
+      "Diseñando interfaces intuitivas",
+      "Construyendo aplicaciones escalables"
+    ],
+    "viewWork": "Ver mi trabajo",
     "getInTouch": "Contáctame",
-    "downloadCV": "Descargar CV",
-    "scrollDown": "Desplázate Hacia Abajo"
+    "scrollDown": "Desplázate hacia abajo"
   },
   "about": {
     "title": "Acerca de mí",
@@ -84,11 +85,63 @@
     "folio": "Folio",
     "location": "Ubicación",
     "type": "Tipo",
-    "viewMore": "Ver más certificados"
+    "viewMore": "Ver más certificados",
+    "certificates": {
+      "cert1": {
+        "title": "Administrador de bases de datos",
+        "issuer": "Capacítate para el Empleo",
+        "type": "Curso"
+      },
+      "cert2": {
+        "title": "Lógica de programación",
+        "issuer": "Capacítate para el Empleo",
+        "type": "Curso"
+      },
+      "cert3": {
+        "title": "Introducción a la Programación",
+        "issuer": "Universidad de las Fuerzas Armadas ESPE",
+        "type": "Curso"
+      },
+      "cert4": {
+        "title": "Funciones reales y sus aplicaciones a la ingeniería",
+        "issuer": "Universidad Técnica de Manabí",
+        "type": "Webinar"
+      }
+    }
   },
   "experience": {
     "title": "Experiencia",
-    "subtitle": "Mi trayectoria profesional y logros clave"
+    "subtitle": "Mi trayectoria profesional y logros clave",
+    "experiences": {
+      "exp1": {
+        "title": "Desarrollador Full Stack",
+        "company": "Instituto Superior Tecnológico Los Andes (ISTLA)",
+        "location": "Santo Domingo, Ecuador",
+        "period": "Marzo 2025 – Agosto 2025",
+        "description": "Desarrollé un sistema web de evaluación docente en producción, con autenticación, formularios dinámicos y paneles por roles. Generé reportes en tiempo real (Node.js, React, MySQL) que mejoraron la toma de decisiones académicas."
+      },
+      "exp2": {
+        "title": "Desarrollador de Software (Prácticas)",
+        "company": "Cuerpo de Bomberos de Santo Domingo (GAD Municipal)",
+        "location": "Santo Domingo, Ecuador",
+        "period": "Septiembre 2024 – Noviembre 2024",
+        "description": "Migré un sistema de Python a PHP, unificando módulos en una sola aplicación web. Implementé el módulo de gestión de incidentes, agilizando registro y consulta de emergencias."
+      },
+      "exp3": {
+        "title": "Desarrollador de Aplicaciones Móviles (Prácticas)",
+        "company": "iDrix Technology",
+        "location": "Santo Domingo, Ecuador",
+        "period": "Abril 2024 – Julio 2024",
+        "description": "Colaboré en el desarrollo de apps móviles con Flutter, implementando registro y lectura NFC. Aporté en diseño UI, conexión backend y pruebas funcionales, mejorando la experiencia de usuario."
+      },
+      "exp4": {
+        "title": "Diseñador UX/UI (Formación)",
+        "company": "Universidad de las Fuerzas Armadas ESPE",
+        "location": "Santo Domingo, Ecuador",
+        "period": "Septiembre 2023 – Noviembre 2023",
+        "description": "Diseñé interfaces y prototipos para una app de gestión de emergencias comunitarias. Elaboré manuales de usuario y logo, facilitando la adopción de la solución por la comunidad."
+      }
+    }
   },
   "contact": {
     "title": "Contáctame",
@@ -114,7 +167,14 @@
     "by": "por",
     "description": "Desarrollador apasionado creando soluciones digitales innovadoras con tecnologías modernas y código limpio.",
     "quickLinks": "Enlaces Rápidos",
-    "connect": "Conectar"
+    "connect": "Conectar",
+    "roles": {
+      "fullstack": "Desarrollador Full Stack",
+      "frontend": "Especialista Frontend",
+      "backend": "Ingeniero Backend",
+      "uiux": "Diseñador UI/UX",
+      "mobile": "Desarrollador Móvil"
+    }
   },
   "common": {
     "loading": "Cargando...",

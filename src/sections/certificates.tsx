@@ -16,50 +16,50 @@ export const Certificates = () => {
   const certificates = [
     {
       id: 1,
-      title: "Administrador de bases de datos",
-      issuer: "Capacítate para el Empleo",
+      title: t('certificates.certificates.cert1.title', 'Administrador de bases de datos'),
+      issuer: t('certificates.certificates.cert1.issuer', 'Capacítate para el Empleo'),
       date: "2023",
       imageId: "Captura_de_pantalla_2025-09-09_173651_dact0q",
       credentialUrl: "https://capacitateparaelempleo.org/verifica/d391207e-15fa-41e7-b947-8cc9d224a8b2/4b47531c-29ad-49c0-8e4b-9727046cdc7e",
       skills: ["Bases de Datos", "SQL", "Administración", "MySQL"],
-      hours: "83 horas",
-      type: "Curso",
+      hours: t('certificates.hours', '83 horas').replace('Horas', '83 horas').replace('Hours', '83 hours'),
+      type: t('certificates.certificates.cert1.type', 'Curso'),
       score: "9.67"
     },
     {
       id: 2,
-      title: "Lógica de programación",
-      issuer: "Capacítate para el Empleo",
+      title: t('certificates.certificates.cert2.title', 'Lógica de programación'),
+      issuer: t('certificates.certificates.cert2.issuer', 'Capacítate para el Empleo'),
       date: "2021",
       imageId: "Captura_de_pantalla_2025-09-09_173624_ujvuk7",
       credentialUrl: "https://capacitateparaelempleo.org/verifica/d391207e-15fa-41e7-b947-8cc9d224a8b2/085cc047-6ac3-43f2-8037-872922f74147",
       skills: ["Lógica", "Algoritmos", "Programación", "Fundamentos"],
       folio: "6l9j6ugwm",
-      hours: "60 horas",
-      type: "Curso"
+      hours: "60 " + t('certificates.hours', 'horas').toLowerCase(),
+      type: t('certificates.certificates.cert2.type', 'Curso')
     },
     {
       id: 3,
-      title: "Introducción a la Programación",
-      issuer: "Universidad de las Fuerzas Armadas ESPE",
+      title: t('certificates.certificates.cert3.title', 'Introducción a la Programación'),
+      issuer: t('certificates.certificates.cert3.issuer', 'Universidad de las Fuerzas Armadas ESPE'),
       date: "2022",
       imageId: "Captura_de_pantalla_2025-09-09_170552_imqcrq",
       credentialUrl: "https://qrco.de/bcx7Ob",
       skills: ["Programación", "Fundamentos", "Algoritmos", "Desarrollo"],
-      hours: "40 horas",
+      hours: "40 " + t('certificates.hours', 'horas').toLowerCase(),
       location: "Santo Domingo",
-      type: "Curso"
+      type: t('certificates.certificates.cert3.type', 'Curso')
     },
     {
       id: 4,
-      title: "Funciones reales y sus aplicaciones a la ingeniería",
-      issuer: "Universidad Técnica de Manabí",
+      title: t('certificates.certificates.cert4.title', 'Funciones reales y sus aplicaciones a la ingeniería'),
+      issuer: t('certificates.certificates.cert4.issuer', 'Universidad Técnica de Manabí'),
       date: "2022",
       imageId: "Captura_de_pantalla_2025-09-09_170640_ys0bwi",
       credentialUrl: "https://utm.edu.ec/posgrado/servicios/servicios-web/consultar-certificado",
       skills: ["Matemáticas", "Funciones", "Ingeniería", "Análisis"],
-      hours: "2 horas",
-      type: "Webinar"
+      hours: "2 " + t('certificates.hours', 'horas').toLowerCase(),
+      type: t('certificates.certificates.cert4.type', 'Webinar')
     }
   ];
 

@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import RotatingText from './RotatingText';
 
 export const Footer = () => {
   const { t } = useTranslation();
@@ -7,17 +8,17 @@ export const Footer = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      url: 'https://github.com/jair', // Replace with your GitHub
+      url: 'https://github.com/jssanchez03',
       icon: Github
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/jair', // Replace with your LinkedIn
+      url: 'https://www.linkedin.com/in/jair-s%C3%A1nchez/',
       icon: Linkedin
     },
     {
       name: 'Email',
-      url: 'mailto:jair@example.com', // Replace with your email
+      url: 'jairssan03@gmail.com',
       icon: Mail
     }
   ];
@@ -35,9 +36,34 @@ export const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-              Jair Sánchez
-            </h3>
+            <div className="text-2xl font-bold min-h-[3rem] flex items-center">
+              <RotatingText
+                texts={[
+                  'Jair Sánchez',
+                  t('footer.roles.fullstack', 'Full Stack Developer'),
+                  t('footer.roles.frontend', 'Frontend Specialist'), 
+                  t('footer.roles.backend', 'Backend Engineer'),
+                  t('footer.roles.uiux', 'UI/UX Designer'),
+                  t('footer.roles.mobile', 'Mobile Developer')
+                ]}
+                mainClassName="overflow-hidden"
+                staggerFrom="last"
+                initial={{ y: "100%", opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: "-120%", opacity: 0 }}
+                staggerDuration={0.015}
+                splitLevelClassName="overflow-hidden"
+                elementLevelClassName="inline-block"
+                transition={{ type: "spring", damping: 35, stiffness: 300 }}
+                rotationInterval={4500}
+                splitBy="characters"
+                style={{ 
+                  color: '#818cf8',
+                  fontWeight: 'bold',
+                  fontSize: '1.5rem'
+                }}
+              />
+            </div>
             <p className="leading-relaxed" style={{ color: 'var(--muted)' }}>
               {t('footer.description')}
             </p>
@@ -53,15 +79,17 @@ export const Footer = () => {
                 <li key={link}>
                   <a
                     href={`#${link}`}
-                    className="transition-colors duration-200 capitalize hover:translate-x-1 inline-block"
+                    className="transition-all duration-300 capitalize hover:translate-x-1 inline-block hover:scale-105"
                     style={{ color: 'var(--muted)' }}
                     onMouseEnter={(e) => {
                       const target = e.currentTarget as HTMLAnchorElement;
-                      target.style.color = 'var(--accent)';
+                      target.style.color = 'var(--muted-teal)';
+                      target.style.textShadow = '0 0 8px var(--muted-teal)';
                     }}
                     onMouseLeave={(e) => {
                       const target = e.currentTarget as HTMLAnchorElement;
                       target.style.color = 'var(--muted)';
+                      target.style.textShadow = 'none';
                     }}
                   >
                     {t(`nav.${link}`)}
@@ -85,7 +113,7 @@ export const Footer = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 rounded-full transition-all duration-300 hover:scale-110 hover:shadow-lg"
+                    className="p-3 rounded-full transition-all duration-300  hover:scale-110 hover:shadow-lg"
                     style={{ background: 'var(--card-bg)', color: 'var(--fg)' }}
                     onMouseEnter={(e) => {
                       const target = e.currentTarget as HTMLAnchorElement;

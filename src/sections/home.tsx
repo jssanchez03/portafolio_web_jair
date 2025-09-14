@@ -116,6 +116,9 @@ export const Home = () => {
               duration={500}
               offset={-70}
               className="px-6 py-2.5 bg-indigo-500 hover:bg-indigo-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 text-sm"
+              aria-label="View my projects and work"
+              role="button"
+              tabIndex={0}
             >
               {t('home.viewWork')}
             </Link>
@@ -125,6 +128,9 @@ export const Home = () => {
               duration={500}
               offset={-70}
               className="px-6 py-2.5 border-2 border-indigo-500 text-indigo-500 hover:bg-indigo-500 hover:text-white font-semibold rounded-full transition-all duration-300 cursor-pointer hover:scale-105 text-sm"
+              aria-label="Get in touch with me"
+              role="button"
+              tabIndex={0}
             >
               {t('home.getInTouch')}
             </Link>
@@ -143,15 +149,17 @@ export const Home = () => {
               rel="noopener noreferrer"
               className="p-2.5 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-[var(--fg)] hover:text-indigo-500 hover:scale-110"
               style={{ background: 'color-mix(in srgb, var(--bg) 85%, white)' }}
+              aria-label="Visit Jair Sanchez GitHub profile"
             >
               <Github className="w-6 h-6" />
             </a>
             <a
-              href="https://www.linkedin.com/in/jair-s%C3%A1nchez/"
+              href="https://linkedin.com/in/jair-sanchez"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2.5 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-[var(--fg)] hover:text-indigo-500 hover:scale-110"
               style={{ background: 'color-mix(in srgb, var(--bg) 85%, white)' }}
+              aria-label="Visit Jair Sanchez LinkedIn profile"
             >
               <Linkedin className="w-6 h-6" />
             </a>
@@ -159,6 +167,7 @@ export const Home = () => {
               href="mailto:jairssan03@gmail.com"
               className="p-2.5 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-[var(--fg)] hover:text-indigo-500 hover:scale-110"
               style={{ background: 'color-mix(in srgb, var(--bg) 85%, white)' }}
+              aria-label="Send email to Jair Sanchez"
             >
               <Mail className="w-6 h-6" />
             </a>

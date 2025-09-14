@@ -71,6 +71,9 @@ export const Navbar = () => {
               offset={-70}
               className="px-3 py-2 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer hover:bg-white/20 hover:scale-105 whitespace-nowrap"
               style={{ color: 'var(--fg)' }}
+              aria-label={`Navigate to ${item.name} section`}
+              role="button"
+              tabIndex={0}
             >
               {item.name}
             </Link>
@@ -83,6 +86,7 @@ export const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 px-3 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded-full transition-all duration-200 hover:scale-105 text-xs ml-1 whitespace-nowrap"
+            aria-label="Download Jair Sanchez CV PDF"
           >
             <Download className="w-3 h-3" />
             {t('nav.downloadCV')}

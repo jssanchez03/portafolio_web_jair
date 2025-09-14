@@ -4,6 +4,7 @@ import { ExternalLink, Github, Eye } from 'lucide-react';
 import Masonry from '../components/Masonry';
 import Modal from '../components/ui/Modal';
 import ImagePreview from '../components/ui/ImagePreview';
+import OptimizedImage from '../components/OptimizedImage';
 import { useState } from 'react';
 
 export const Projects = () => {
@@ -204,13 +205,16 @@ export const Projects = () => {
                 >
                   {/* Project Image */}
                   <div className="relative h-48 overflow-hidden rounded-t-xl">
-                    <img
+                    <OptimizedImage
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover rounded-t-xl"
                       style={{
                         transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
                       }}
+                      width={400}
+                      height={192}
+                      priority={index < 2}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.transform = 'scale(1.08)';
                       }}

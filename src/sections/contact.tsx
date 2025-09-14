@@ -12,24 +12,35 @@ export const Contact = () => {
   const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
   const [canPlayLottie, setCanPlayLottie] = useState(false);
 
-  // Detect if the dotlottie web component is available; if not, we'll show a fallback icon
+  // Load dotlottie and detect if available
   useEffect(() => {
-    try {
-      if (typeof window !== 'undefined' && 'customElements' in window) {
-        const existing = (window as any).customElements.get('dotlottie-player');
-        if (existing) {
-          setCanPlayLottie(true);
-        } else if ((window as any).customElements.whenDefined) {
-          (window as any).customElements
-            .whenDefined('dotlottie-player')
-            .then(() => setCanPlayLottie(true))
-            .catch(() => setCanPlayLottie(false));
-        }
+    const loadLottie = () => {
+      // Load dotlottie script if not already loaded
+      if (typeof (window as any).loadDotLottie === 'function') {
+        (window as any).loadDotLottie();
       }
-    } catch {
-      setCanPlayLottie(false);
-    }
-  }, []);
+      
+      // Check if dotlottie is available
+      try {
+        if (typeof window !== 'undefined' && 'customElements' in window) {
+          const existing = (window as any).customElements.get('dotlottie-player');
+          if (existing) {
+            setCanPlayLottie(true);
+          } else if ((window as any).customElements.whenDefined) {
+            (window as any).customElements
+              .whenDefined('dotlottie-player')
+              .then(() => setCanPlayLottie(true))
+              .catch(() => setCanPlayLottie(false));
+          }
+        }
+      } catch {
+        setCanPlayLottie(false);
+      }
+    };
+
+    // Load immediately and also when success state changes
+    loadLottie();
+  }, [isSuccess]);
 
   // EmailJS configuration - Replace with your actual values
   const SERVICE_ID = 'service_cobfowa'; // Tu Service ID de EmailJS

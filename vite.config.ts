@@ -9,25 +9,11 @@ export default defineConfig({
     // Optimize chunk splitting for better caching
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'vendor';
-            }
-            if (id.includes('gsap') || id.includes('framer-motion')) {
-              return 'animation-libs';
-            }
-            if (id.includes('three') || id.includes('ogl')) {
-              return 'three-libs';
-            }
-            if (id.includes('lucide-react') || id.includes('react-icons')) {
-              return 'ui-libs';
-            }
-            if (id.includes('i18next')) {
-              return 'i18n';
-            }
-            return 'vendor';
-          }
+        manualChunks: {
+          'vendor': ['react', 'react-dom'],
+          'animation-libs': ['gsap'],
+          'ui-libs': ['lucide-react'],
+          'i18n': ['i18next', 'react-i18next']
         }
       }
     },
@@ -51,14 +37,7 @@ export default defineConfig({
       'react-dom',
       'react-i18next',
       'i18next',
-      'lucide-react'
-    ],
-    exclude: [
-      // Exclude heavy libraries from pre-bundling to allow lazy loading
-      'three',
-      '@react-three/fiber',
-      '@react-three/drei',
-      'ogl',
+      'lucide-react',
       'gsap'
     ]
   }

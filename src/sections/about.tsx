@@ -43,7 +43,7 @@ export const About = () => {
               className="flex justify-center lg:justify-start"
             >
               <TiltedCard
-                imageSrc="https://res.cloudinary.com/dq8at3uoc/image/upload/v1757551623/20250604_171012_v27ulu.jpg"
+                imageSrc="https://res.cloudinary.com/dq8at3uoc/image/upload/v1758062640/20250604_171012_nrpyls.webp"
                 altText="Jair Sánchez - Full Stack Developer"
                 captionText="Jair Sánchez"
                 containerHeight="400px"
